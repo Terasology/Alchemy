@@ -1,0 +1,11 @@
+{
+    "parent": "engine:iconItem",
+    "Item": {
+        "icon": "WorkstationCrafting:items#CookedRice",
+        "stackId": "Alchemy:herbSeed",
+        "consumedOnUse": true
+    },
+    "DisplayName": {
+        "name": "Herb Seed"
+    }
+}

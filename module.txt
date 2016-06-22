@@ -1,0 +1,54 @@
+{
+    "id" : "Alchemy",
+    "version" : "0.1.0-SNAPSHOT",
+    "author" : "XTariq, Marcin Sciesinski <marcins78@gmail.com>",
+    "displayName" : "Alchemy",
+    "description" : "A module that allows the brewing of potions, elixirs, tonics, and other vials.",
+    "dependencies" : [
+            {
+                "id" : "AnotherWorld",
+                "minVersion" : "0.2.0"
+            },
+            {
+                "id" : "AnotherWorldPlants",
+                "minVersion" : "0.1.0"
+            },
+            {
+                "id" : "AlterationEffects",
+                "minVersion" : "0.2.0"
+            },
+            {
+                "id" : "WorkstationCrafting",
+                "minVersion" : "0.1.0"
+            },
+            {
+                "id" : "GrowingFlora",
+                "minVersion" : "0.1.0"
+            },
+            {
+                "id" : "Core",
+                "minVersion" : "1.0.0"
+            },
+            {
+                "id" : "Hunger",
+                "minVersion" : "0.1.0"
+            },
+            {
+                "id" : "Genome",
+                "minVersion" : "0.1.0"
+            },
+            {
+                "id" : "NameGenerator",
+                "minVersion" : "0.4.0"
+            },
+            {
+                "id" : "PlantPack",
+                "minVersion" : "0.1.0"
+            },
+            {
+                "id" : "Seasons",
+                "minVersion" : "0.9.0"
+            }
+    ],
+    "serverSideOnly" : false
+}

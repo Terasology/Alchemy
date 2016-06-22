@@ -1,0 +1,17 @@
+{
+    "parent": "engine:iconItem",
+    "Item": {
+        "icon": "Alchemy:RegenPotion1",
+        "stackId": "Alchemy:regenPotion",
+        "consumedOnUse": true
+    },
+    "DisplayName": {
+        "name": "Regen Potion I"
+    },
+    "Potion": {
+        "effect": "REGEN",
+        "magnitude": 3,
+        "duration": 10000,
+        "hasGenome": false
+    }
+}

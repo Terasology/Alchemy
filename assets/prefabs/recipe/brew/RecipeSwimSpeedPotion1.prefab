@@ -1,0 +1,18 @@
+{
+    "ProcessDefinition": {
+        "processType": "Alchemy:Herbalism"
+    },
+    "CraftingStationRecipe": {
+        "recipeId": "Alchemy:SwimSpeedPotion",
+
+        "recipeComponents": ["2*Alchemy:SwimSpeedHerb"],
+        "recipeFluids": ["0.5*Fluid:Water"],
+        "requiredTemperature": 150,
+        "processingDuration": 3000,
+
+        "itemResult": "1*Alchemy:SwimSpeedPotion"
+    },
+    "HerbalismStationRecipe": {
+        "recipeId": "Alchemy:SwimSpeedPotion"
+    }
+}

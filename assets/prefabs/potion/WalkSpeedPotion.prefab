@@ -1,0 +1,17 @@
+{
+    "parent": "engine:iconItem",
+    "Item": {
+        "icon": "Alchemy:WalkSpeedPotion1",
+        "stackId": "Alchemy:walkSpeedPotion",
+        "consumedOnUse": true
+    },
+    "DisplayName": {
+        "name": "Walk Speed Potion I"
+    },
+    "Potion": {
+        "effect": "WALK",
+        "magnitude": 2,
+        "duration": 10000,
+        "hasGenome": false
+    }
+}

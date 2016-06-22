@@ -1,0 +1,21 @@
+{
+    "parent": "engine:iconItem",
+    "Item": {
+        "icon": "Alchemy:SwimSpeedHerb",
+        "stackId": "Alchemy:swimSpeedHerb"
+    },
+    "DisplayName": {
+        "name": "Swim Speed Herb"
+    },
+    "Herb": { },
+    "GeneratedHerb": {
+        "herbBaseGenome": "BCDAACDABB"
+    },
+    "Genome": {
+        "genomeId": "ABCCEFGHIH",
+        "genes": "12348"
+    },
+    "CraftingStationIngredient": {
+        "type": "Alchemy:swimSpeedHerb"
+    }
+}

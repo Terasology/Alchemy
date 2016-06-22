@@ -1,0 +1,7 @@
+{
+    "LivingPlant": {
+        "type": "Alchemy:Herb"
+    },
+    "Herb": {},
+    "PollinatingHerb": {}
+}

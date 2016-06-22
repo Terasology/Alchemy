@@ -1,0 +1,17 @@
+{
+    "parent": "engine:iconItem",
+    "Item": {
+        "icon": "Alchemy:HealPotion1",
+        "stackId": "Alchemy:healPotion",
+        "consumedOnUse": true
+    },
+    "DisplayName": {
+        "name": "Heal Potion I"
+    },
+    "Potion": {
+        "effect": "HEAL",
+        "magnitude": 0.2,
+        "duration": 1,
+        "hasGenome": false
+    }
+}

@@ -1,0 +1,12 @@
+{
+    "parent": "engine:iconItem",
+    "Item": {
+        "icon": "WorkstationCrafting:items#CookedRice",
+        "stackId": "Alchemy:herbPotion",
+        "consumedOnUse": true
+    },
+    "DisplayName": {
+        "name": "Herb Potion"
+    },
+    "Potion": { }
+}
