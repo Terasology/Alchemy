@@ -6,12 +6,20 @@
         "consumedOnUse": true
     },
     "DisplayName": {
-        "name": "Walk Speed Potion I"
+        "name": "Walk Speed Potion I",
+        "description": "Doubles the user's walk speed for 10 seconds."
     },
     "Potion": {
         "effect": "WALK",
         "magnitude": 2,
         "duration": 10000,
-        "hasGenome": false
+        "hasGenome": false,
+        "effects": [
+            {
+                "effect": "WALK",
+                "magnitude": 2,
+                "duration": 10000
+            }
+        ]
     }
 }

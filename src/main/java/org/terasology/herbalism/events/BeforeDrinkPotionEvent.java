@@ -23,12 +23,14 @@ import org.terasology.entitySystem.entity.EntityRef;
 import org.terasology.entitySystem.event.ConsumableEvent;
 import org.terasology.herbalism.HerbEffect;
 import org.terasology.herbalism.component.PotionComponent;
+import org.terasology.herbalism.component.PotionEffect;
 
 // TODO: Add extends AbstractValueModifiableEvent?
 public class BeforeDrinkPotionEvent implements ConsumableEvent {
 
     private PotionComponent potion;
-    private HerbEffect effect;
+    private HerbEffect hEffect;
+    private PotionEffect pEffect;
     private EntityRef instigator;
     private EntityRef item;
 
@@ -42,25 +44,33 @@ public class BeforeDrinkPotionEvent implements ConsumableEvent {
 
     public BeforeDrinkPotionEvent(PotionComponent p) {
         potion = p;
-        effect = null;
+        hEffect = null;
         instigator = EntityRef.NULL;
     }
 
     public BeforeDrinkPotionEvent(PotionComponent p, HerbEffect h) {
         potion = p;
-        effect = h;
+        hEffect = h;
         instigator = EntityRef.NULL;
     }
 
     public BeforeDrinkPotionEvent(PotionComponent p, HerbEffect h, EntityRef instigatorRef) {
         potion = p;
-        effect = h;
+        hEffect = h;
         instigator = instigatorRef;
     }
 
     public BeforeDrinkPotionEvent(PotionComponent p, HerbEffect h, EntityRef instigatorRef, EntityRef itemRef) {
         potion = p;
-        effect = h;
+        hEffect = h;
+        instigator = instigatorRef;
+        item = itemRef;
+    }
+
+    public BeforeDrinkPotionEvent(PotionComponent p, HerbEffect h, PotionEffect v, EntityRef instigatorRef, EntityRef itemRef) {
+        potion = p;
+        hEffect = h;
+        pEffect = v;
         instigator = instigatorRef;
         item = itemRef;
     }
@@ -117,7 +127,7 @@ public class BeforeDrinkPotionEvent implements ConsumableEvent {
         // For now, add all modifiers and multiply by all multipliers. Negative modifiers cap to zero, but negative
         // multipliers remain.
 
-        float result = potion.magnitude;
+        float result = pEffect.magnitude;
         TFloatIterator modifierIter = magnitudeModifiers.iterator();
         while (modifierIter.hasNext()) {
             result += modifierIter.next();
@@ -142,7 +152,7 @@ public class BeforeDrinkPotionEvent implements ConsumableEvent {
         // For now, add all modifiers and multiply by all multipliers. Negative modifiers cap to zero, but negative
         // multipliers remain.
 
-        double result = potion.duration;
+        double result = pEffect.duration;
         TFloatIterator modifierIter = durationModifiers.iterator();
         while (modifierIter.hasNext()) {
             result += modifierIter.next();

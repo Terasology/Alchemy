@@ -6,12 +6,20 @@
         "consumedOnUse": true
     },
     "DisplayName": {
-        "name": "Regen Potion I"
+        "name": "Regen Potion I",
+        "description": "Regenerates 30 HP over 10 seconds."
     },
     "Potion": {
         "effect": "REGEN",
         "magnitude": 3,
         "duration": 10000,
-        "hasGenome": false
+        "hasGenome": false,
+        "effects": [
+            {
+                "effect": "REGEN",
+                "magnitude": 3,
+                "duration": 10100
+            }
+        ]
     }
 }

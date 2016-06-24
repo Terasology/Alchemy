@@ -1,5 +1,5 @@
 /*
- * Copyright 2014 MovingBlocks
+ * Copyright 2016 MovingBlocks
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,25 +13,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package org.terasology.herbalism.component;
 
-import com.google.common.collect.Lists;
-import org.terasology.entitySystem.Component;
-import org.terasology.entitySystem.Owns;
-import org.terasology.entitySystem.entity.EntityRef;
-import org.terasology.network.Replicate;
-import org.terasology.network.ReplicationCheck;
+import org.terasology.reflection.MappedContainer;
 
-import java.util.List;
-
-public final class PotionComponent implements Component {
+@MappedContainer
+public class PotionEffect {
     public String effect;
     public float magnitude;
     public long duration;
-    public boolean hasGenome = true; // If a potion has been predefined by a developer, set this to false.
-
-    // List of PotionEffects.
-    @Replicate
-    public List<PotionEffect> effects = Lists.newArrayList();
 }

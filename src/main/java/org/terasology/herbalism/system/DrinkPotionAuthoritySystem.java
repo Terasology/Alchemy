@@ -34,6 +34,7 @@ import org.terasology.herbalism.HerbEffect;
 import org.terasology.herbalism.Herbalism;
 import org.terasology.herbalism.PotionCommonEffects;
 import org.terasology.herbalism.component.PotionComponent;
+import org.terasology.herbalism.component.PotionEffect;
 import org.terasology.herbalism.effect.AlterationEffectWrapperHerbEffect;
 import org.terasology.herbalism.effect.DoNothingEffect;
 import org.terasology.herbalism.effect.HealEffect;
@@ -57,15 +58,6 @@ public class DrinkPotionAuthoritySystem extends BaseComponentSystem {
     @In
     private Context context;
 
-    // TODO: The following two are temporary until moved to AlterationEffects.
-    public static final String EXPIRE_TRIGGER_PREFIX = "WorkstationCrafting:Expire:";
-    private Map<String, Class<? extends Component>> effectComponents = new HashMap<>();
-
-    @Override
-    public void initialise() {
-        effectComponents.put(PotionCommonEffects.JUMP_SPEED, JumpSpeedComponent.class);
-    }
-
     @ReceiveEvent
     public void potionConsumed(ActivateEvent event, EntityRef item, PotionComponent potion, GenomeComponent genome) {
 
@@ -80,8 +72,8 @@ public class DrinkPotionAuthoritySystem extends BaseComponentSystem {
         effect.applyEffect(item, event.getInstigator(), magnitude, duration);
     }
 
-    private void checkDrink(EntityRef instigator, EntityRef item, PotionComponent p, HerbEffect h) {
-        BeforeDrinkPotionEvent beforeDrink = instigator.send(new BeforeDrinkPotionEvent(p, h, instigator, item));
+    private void checkDrink(EntityRef instigator, EntityRef item, PotionComponent p, HerbEffect h, PotionEffect v) {
+        BeforeDrinkPotionEvent beforeDrink = instigator.send(new BeforeDrinkPotionEvent(p, h, v, instigator, item));
 
         if (!beforeDrink.isConsumed()) {
             float modifiedMagnitude = beforeDrink.getMagnitudeResultValue();
@@ -92,7 +84,8 @@ public class DrinkPotionAuthoritySystem extends BaseComponentSystem {
             }
         }
 
-        audioManager.playSound(Assets.getSound("engine:drink").get(), 1.0f);
+
+        //audioManager.playSound(Assets.getSound("engine:drink").get(), 1.0f);
     }
 
     @ReceiveEvent
@@ -102,25 +95,46 @@ public class DrinkPotionAuthoritySystem extends BaseComponentSystem {
 
         EntityRef item = event.getItem();
 
-        if (p.effect.equals(PotionCommonEffects.HEAL)) {
-            e = new HealEffect();
-        } else if (p.effect.equals(PotionCommonEffects.REGEN)) {
-            RegenerationAlterationEffect effect = new RegenerationAlterationEffect(context);
-            e = new AlterationEffectWrapperHerbEffect(effect, 1f, 1f);
-        } else if (p.effect.equals(PotionCommonEffects.WALK_SPEED)) {
-            WalkSpeedAlterationEffect effect = new WalkSpeedAlterationEffect(context);
-            e = new AlterationEffectWrapperHerbEffect(effect, 1f, 1f);
-        } else if (p.effect.equals(PotionCommonEffects.SWIM_SPEED)) {
-            SwimSpeedAlterationEffect effect = new SwimSpeedAlterationEffect(context);
-            e = new AlterationEffectWrapperHerbEffect(effect, 1f, 1f);
-        } else if (p.effect.equals(PotionCommonEffects.JUMP_SPEED)) {
-            JumpSpeedAlterationEffect effect = new JumpSpeedAlterationEffect(context);
-            e = new AlterationEffectWrapperHerbEffect(effect, 1f, 1f);
-        } else {
-            e = new DoNothingEffect();
+        // If there are no effects, just play the drink sound and return.
+        if (p.effects.size() == 0) {
+            audioManager.playSound(Assets.getSound("engine:drink").get(), 1.0f);
+            return;
         }
 
-        checkDrink(event.getInstigator(), event.getItem(), p, e);
+        // Iterate through all effects of this potion and apply them.
+        for (PotionEffect pEffect : p.effects) {
+            e = null;
+
+            // Figure out what specific effect this is and create a HerbEffect based on that.
+            switch (pEffect.effect) {
+                case PotionCommonEffects.HEAL:
+                    e = new HealEffect();
+                    break;
+                case PotionCommonEffects.REGEN:
+                    RegenerationAlterationEffect effect = new RegenerationAlterationEffect(context);
+                    e = new AlterationEffectWrapperHerbEffect(effect, 1f, 1f);
+                    break;
+                case PotionCommonEffects.WALK_SPEED:
+                    WalkSpeedAlterationEffect wsEffect = new WalkSpeedAlterationEffect(context);
+                    e = new AlterationEffectWrapperHerbEffect(wsEffect, 1f, 1f);
+                    break;
+                case PotionCommonEffects.SWIM_SPEED:
+                    SwimSpeedAlterationEffect ssEffect = new SwimSpeedAlterationEffect(context);
+                    e = new AlterationEffectWrapperHerbEffect(ssEffect, 1f, 1f);
+                    break;
+                case PotionCommonEffects.JUMP_SPEED:
+                    JumpSpeedAlterationEffect jsEffect = new JumpSpeedAlterationEffect(context);
+                    e = new AlterationEffectWrapperHerbEffect(jsEffect, 1f, 1f);
+                    break;
+                default:
+                    e = new DoNothingEffect();
+                    break;
+            }
+
+            checkDrink(event.getInstigator(), event.getItem(), p, e, pEffect);
+        }
+
+        audioManager.playSound(Assets.getSound("engine:drink").get(), 1.0f);
     }
 
     // Consume a potion without a Genome attached to it. Usually predefined ones.
