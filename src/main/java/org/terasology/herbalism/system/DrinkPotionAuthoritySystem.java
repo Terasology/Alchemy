@@ -16,10 +16,7 @@
 package org.terasology.herbalism.system;
 
 import org.terasology.alterationEffects.regenerate.RegenerationAlterationEffect;
-import org.terasology.alterationEffects.speed.JumpSpeedAlterationEffect;
-import org.terasology.alterationEffects.speed.JumpSpeedComponent;
-import org.terasology.alterationEffects.speed.SwimSpeedAlterationEffect;
-import org.terasology.alterationEffects.speed.WalkSpeedAlterationEffect;
+import org.terasology.alterationEffects.speed.*;
 import org.terasology.audio.AudioManager;
 import org.terasology.context.Context;
 import org.terasology.entitySystem.Component;
@@ -83,9 +80,6 @@ public class DrinkPotionAuthoritySystem extends BaseComponentSystem {
                 h.applyEffect(item, instigator, modifiedMagnitude, modifiedDuration);
             }
         }
-
-
-        //audioManager.playSound(Assets.getSound("engine:drink").get(), 1.0f);
     }
 
     @ReceiveEvent
@@ -125,6 +119,10 @@ public class DrinkPotionAuthoritySystem extends BaseComponentSystem {
                 case PotionCommonEffects.JUMP_SPEED:
                     JumpSpeedAlterationEffect jsEffect = new JumpSpeedAlterationEffect(context);
                     e = new AlterationEffectWrapperHerbEffect(jsEffect, 1f, 1f);
+                    break;
+                case PotionCommonEffects.MULTI_JUMP:
+                    MultiJumpAlterationEffect mjEffect = new MultiJumpAlterationEffect(context);
+                    e = new AlterationEffectWrapperHerbEffect(mjEffect, 1f, 1f);
                     break;
                 default:
                     e = new DoNothingEffect();
