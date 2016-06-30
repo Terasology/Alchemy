@@ -1,21 +1,21 @@
 {
     "parent": "engine:iconItem",
     "Item": {
-        "icon": "Alchemy:items#WoodenBucketEmpty",
+        "icon": "Alchemy:EmptyPotionBottle",
         "stackId": "Alchemy:glassBottle",
         "consumedOnUse": false
     },
     "DisplayName": {
         "name": "Glass Bottle",
-        "description": "Used for storing fluids such as potions."
+        "description": "Used for storing fluids such as potions or water."
     },
     "FluidContainerItem": {
-        "volume": 0.6,
-        "maxVolume": 0.6,
+        "volume": 0.4,
+        "maxVolume": 0.4,
         "fluidMinPerc": [0.1875, 0.15625],
         "fluidSizePerc": [0.625, 0.4375],
-        "textureWithHole": "WorkstationCrafting:items#WoodenBucket",
-        "emptyTexture": "WorkstationCrafting:items#WoodenBucketEmpty"
+        "textureWithHole": "Alchemy:EmptyPotionBottle",
+        "emptyTexture": "Alchemy:EmptyPotionBottle"
     },
     "CraftingStationIngredient": {
         "type": "Alchemy:glassBottle"

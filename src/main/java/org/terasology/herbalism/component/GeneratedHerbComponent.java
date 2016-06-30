@@ -17,6 +17,6 @@ package org.terasology.herbalism.component;
 
 import org.terasology.entitySystem.Component;
 
-public class GeneratedHerbComponent implements Component {
+public final class GeneratedHerbComponent implements Component {
     public String herbBaseGenome;
 }

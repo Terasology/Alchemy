@@ -1,7 +1,7 @@
 {
     "parent": "engine:iconItem",
     "Item": {
-        "icon": "Alchemy:items#WoodenBucketEmpty",
+        "icon": "engine:items#emptyVial",
         "stackId": "Alchemy:glassVial",
         "consumedOnUse": false
     },
@@ -10,12 +10,12 @@
         "description": "Used for storing extracts or small amounts of chemicals."
     },
     "FluidContainerItem": {
-        "volume": 0.3,
-        "maxVolume": 0.3,
+        "volume": 0.2,
+        "maxVolume": 0.2,
         "fluidMinPerc": [0.1875, 0.15625],
         "fluidSizePerc": [0.625, 0.4375],
-        "textureWithHole": "WorkstationCrafting:items#WoodenBucket",
-        "emptyTexture": "WorkstationCrafting:items#WoodenBucketEmpty"
+        "textureWithHole": "engine:items#redVial",
+        "emptyTexture": "engine:items#emptyVial"
     },
     "CraftingStationIngredient": {
         "type": "Alchemy:glassVial"

@@ -1,0 +1,13 @@
+{
+    "ProcessDefinition": {
+        "processType": "WorkstationCrafting:BasicWoodcrafting"
+    },
+    "CraftingStationRecipe": {
+        "recipeId": "Storage|Alchemy:GlassBottle",
+
+        "recipeComponents": ["3*WorkstationCrafting:glass"],
+        "recipeTools": ["1*hammer"],
+
+        "itemResult": "1*Alchemy:GlassBottle"
+    }
+}

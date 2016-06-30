@@ -1,7 +1,7 @@
 {
     "parent": "engine:iconItem",
     "Item": {
-        "icon": "Alchemy:RegenPotion1",
+        "icon": "Alchemy:RegenPotion1Bottle",
         "stackId": "Alchemy:regenPotion",
         "consumedOnUse": true
     },

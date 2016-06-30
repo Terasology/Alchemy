@@ -1,0 +1,22 @@
+{
+    "parent": "engine:iconItem",
+    "Item": {
+        "icon": "Alchemy:WhiteMortarAndPestle",
+        "stackId": "Alchemy:MortarAndPestle",
+        "consumedOnUse": false
+    },
+    "DisplayName": {
+        "name": "Mortar and Pestle",
+        "description": "Used to crush and grind ingredients and substances into fine pastes or powders."
+    },
+    "Durability": {
+        "durability": 100,
+        "maxDurability": 100
+    },
+    "CraftingStationTool": {
+        "type": ["mortarAndPestle"]
+    },
+    "CraftInHandIngredient": {
+        "componentType": "Alchemy:mortarAndPestle"
+    }
+}
