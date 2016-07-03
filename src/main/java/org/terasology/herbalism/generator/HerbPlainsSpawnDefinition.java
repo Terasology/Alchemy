@@ -32,7 +32,7 @@ public class HerbPlainsSpawnDefinition extends StaticBlockFloraSpawnDefinition {
     public HerbPlainsSpawnDefinition() {
         super(PlantType.GRASS, AnotherWorldBiomes.PLAINS.getId(), 0.5f, 0.3f, "Herbalism:Herb",
                 Arrays.asList(
-                        new BlockUri("WorkstationCrafting:HerbGeneratedA")/*,
+                        new BlockUri("Alchemy:HerbGeneratedA")/*,
                         new BlockUri("WorkstationCrafting:Herb2"),
                         new BlockUri("WorkstationCrafting:Herb6"),
                         new BlockUri("WorkstationCrafting:Herb7")*/),

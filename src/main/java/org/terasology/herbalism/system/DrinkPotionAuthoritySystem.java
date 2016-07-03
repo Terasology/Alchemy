@@ -15,6 +15,10 @@
  */
 package org.terasology.herbalism.system;
 
+import org.terasology.alterationEffects.boost.HealthBoostAlterationEffect;
+import org.terasology.alterationEffects.boost.HealthBoostComponent;
+import org.terasology.alterationEffects.damageOverTime.CureDamageOverTimeAlterationEffect;
+import org.terasology.alterationEffects.damageOverTime.DamageOverTimeAlterationEffect;
 import org.terasology.alterationEffects.regenerate.RegenerationAlterationEffect;
 import org.terasology.alterationEffects.speed.*;
 import org.terasology.audio.AudioManager;
@@ -123,6 +127,18 @@ public class DrinkPotionAuthoritySystem extends BaseComponentSystem {
                 case PotionCommonEffects.MULTI_JUMP:
                     MultiJumpAlterationEffect mjEffect = new MultiJumpAlterationEffect(context);
                     e = new AlterationEffectWrapperHerbEffect(mjEffect, 1f, 1f);
+                    break;
+                case PotionCommonEffects.POISON:
+                    DamageOverTimeAlterationEffect poisonEffect = new DamageOverTimeAlterationEffect(context);
+                    e = new AlterationEffectWrapperHerbEffect(poisonEffect, 1f, 1f);
+                    break;
+                case PotionCommonEffects.CURE_POISON:
+                    CureDamageOverTimeAlterationEffect cureEffect = new CureDamageOverTimeAlterationEffect(context);
+                    e = new AlterationEffectWrapperHerbEffect(cureEffect, 1f, 1f);
+                    break;
+                case PotionCommonEffects.TEMP_MAX_HEALTH_BOOST:
+                    HealthBoostAlterationEffect hBoostEffect = new HealthBoostAlterationEffect(context);
+                    e = new AlterationEffectWrapperHerbEffect(hBoostEffect, 1f, 1f);
                     break;
                 default:
                     e = new DoNothingEffect();

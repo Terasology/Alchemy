@@ -20,7 +20,10 @@ public final class PotionCommonEffects {
 
     public static final String HEAL = "HEAL";
     public static final String REGEN = "REGEN";
-    public static final String MAX_HEALTH_INCREASE = "HEALTH_INCREASE";
+    public static final String TEMP_MAX_HEALTH_BOOST = "TEMP_MAX_HEALTH_BOOST";
+
+    public static final String POISON = "POISON";
+    public static final String CURE_POISON = "CURE_POISON";
 
     public static final String WALK_SPEED = "WALK";
     public static final String SWIM_SPEED = "SWIM";

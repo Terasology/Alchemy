@@ -1,0 +1,25 @@
+{
+    "parent": "engine:iconItem",
+    "Item": {
+        "icon": "Alchemy:RegenPotion1Bottle",
+        "stackId": "Alchemy:poisonPotion",
+        "consumedOnUse": true
+    },
+    "DisplayName": {
+        "name": "Poison Potion I",
+        "description": "Poisons user, dealing 5 damage per second for 10 seconds."
+    },
+    "Potion": {
+        "effect": "POISON",
+        "magnitude": 3,
+        "duration": 10000,
+        "hasGenome": false,
+        "effects": [
+            {
+                "effect": "POISON",
+                "magnitude": 5,
+                "duration": 10100
+            }
+        ]
+    }
+}
