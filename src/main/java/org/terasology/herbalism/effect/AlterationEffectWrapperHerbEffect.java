@@ -23,6 +23,7 @@ public class AlterationEffectWrapperHerbEffect implements HerbEffect {
     private AlterationEffect alterationEffect;
     private float durationMultiplier;
     private float magnitudeMultiplier;
+    private String effectID;
 
     public AlterationEffectWrapperHerbEffect(AlterationEffect alterationEffect, float durationMultiplier, float magnitudeMultiplier) {
         this.alterationEffect = alterationEffect;
@@ -30,8 +31,21 @@ public class AlterationEffectWrapperHerbEffect implements HerbEffect {
         this.magnitudeMultiplier = magnitudeMultiplier;
     }
 
+    public AlterationEffectWrapperHerbEffect(AlterationEffect alterationEffect, String effectID,
+                                             float durationMultiplier, float magnitudeMultiplier) {
+        this.alterationEffect = alterationEffect;
+        this.effectID = effectID;
+        this.durationMultiplier = durationMultiplier;
+        this.magnitudeMultiplier = magnitudeMultiplier;
+    }
+
     @Override
     public void applyEffect(EntityRef instigator, EntityRef entity, float magnitude, long duration) {
         alterationEffect.applyEffect(instigator, entity, magnitude * magnitudeMultiplier, (long) (duration * durationMultiplier));
+    }
+
+    @Override
+    public void applyEffect(EntityRef instigator, EntityRef entity, String id, float magnitude, long duration) {
+        alterationEffect.applyEffect(instigator, entity, id, magnitude * magnitudeMultiplier, (long) (duration * durationMultiplier));
     }
 }

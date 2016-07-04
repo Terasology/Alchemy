@@ -27,4 +27,9 @@ public class HealEffect implements HerbEffect {
     public void applyEffect(EntityRef instigator, EntityRef entity, float magnitude, long duration) {
         entity.send(new DoHealEvent(TeraMath.floorToInt(maxHeal * magnitude), instigator));
     }
+
+    @Override
+    public void applyEffect(EntityRef instigator, EntityRef entity, String id, float magnitude, long duration) {
+        entity.send(new DoHealEvent(TeraMath.floorToInt(maxHeal * magnitude), instigator));
+    }
 }

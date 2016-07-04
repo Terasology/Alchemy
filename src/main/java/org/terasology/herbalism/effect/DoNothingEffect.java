@@ -22,4 +22,8 @@ public class DoNothingEffect implements HerbEffect {
     @Override
     public void applyEffect(EntityRef instigator, EntityRef entity, float magnitude, long duration) {
     }
+
+    @Override
+    public void applyEffect(EntityRef instigator, EntityRef entity, String id, float magnitude, long duration) {
+    }
 }

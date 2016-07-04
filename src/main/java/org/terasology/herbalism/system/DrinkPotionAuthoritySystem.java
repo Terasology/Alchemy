@@ -81,7 +81,7 @@ public class DrinkPotionAuthoritySystem extends BaseComponentSystem {
             long modifiedDuration = (long) beforeDrink.getDurationResultValue();
 
             if (modifiedMagnitude > 0 && modifiedDuration > 0) {
-                h.applyEffect(item, instigator, modifiedMagnitude, modifiedDuration);
+                h.applyEffect(item, instigator, v.effect, modifiedMagnitude, modifiedDuration);
             }
         }
     }
@@ -130,7 +130,7 @@ public class DrinkPotionAuthoritySystem extends BaseComponentSystem {
                     break;
                 case PotionCommonEffects.POISON:
                     DamageOverTimeAlterationEffect poisonEffect = new DamageOverTimeAlterationEffect(context);
-                    e = new AlterationEffectWrapperHerbEffect(poisonEffect, 1f, 1f);
+                    e = new AlterationEffectWrapperHerbEffect(poisonEffect, "PoisonPotion", 1f, 1f);
                     break;
                 case PotionCommonEffects.CURE_POISON:
                     CureDamageOverTimeAlterationEffect cureEffect = new CureDamageOverTimeAlterationEffect(context);
