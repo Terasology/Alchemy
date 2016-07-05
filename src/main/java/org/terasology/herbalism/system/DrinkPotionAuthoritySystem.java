@@ -74,6 +74,10 @@ public class DrinkPotionAuthoritySystem extends BaseComponentSystem {
     }
 
     private void checkDrink(EntityRef instigator, EntityRef item, PotionComponent p, HerbEffect h, PotionEffect v) {
+        checkDrink(instigator, item, p, h, v, "");
+    }
+
+    private void checkDrink(EntityRef instigator, EntityRef item, PotionComponent p, HerbEffect h, PotionEffect v, String id) {
         BeforeDrinkPotionEvent beforeDrink = instigator.send(new BeforeDrinkPotionEvent(p, h, v, instigator, item));
 
         if (!beforeDrink.isConsumed()) {
@@ -81,7 +85,11 @@ public class DrinkPotionAuthoritySystem extends BaseComponentSystem {
             long modifiedDuration = (long) beforeDrink.getDurationResultValue();
 
             if (modifiedMagnitude > 0 && modifiedDuration > 0) {
-                h.applyEffect(item, instigator, v.effect, modifiedMagnitude, modifiedDuration);
+                if (id.equalsIgnoreCase("")) {
+                    h.applyEffect(item, instigator, v.effect, modifiedMagnitude, modifiedDuration);
+                } else {
+                    h.applyEffect(item, instigator, id, modifiedMagnitude, modifiedDuration);
+                }
             }
         }
     }
@@ -90,6 +98,7 @@ public class DrinkPotionAuthoritySystem extends BaseComponentSystem {
     public void onPotionWithoutGenomeConsumed(DrinkPotionEvent event, EntityRef ref) {
         PotionComponent p = event.getPotionComponent();
         HerbEffect e = null;
+        String effectID = "";
 
         EntityRef item = event.getItem();
 
@@ -102,6 +111,7 @@ public class DrinkPotionAuthoritySystem extends BaseComponentSystem {
         // Iterate through all effects of this potion and apply them.
         for (PotionEffect pEffect : p.effects) {
             e = null;
+            effectID = "";
 
             // Figure out what specific effect this is and create a HerbEffect based on that.
             switch (pEffect.effect) {
@@ -131,6 +141,7 @@ public class DrinkPotionAuthoritySystem extends BaseComponentSystem {
                 case PotionCommonEffects.POISON:
                     DamageOverTimeAlterationEffect poisonEffect = new DamageOverTimeAlterationEffect(context);
                     e = new AlterationEffectWrapperHerbEffect(poisonEffect, "PoisonPotion", 1f, 1f);
+                    effectID = "PoisonPotion";
                     break;
                 case PotionCommonEffects.CURE_POISON:
                     CureDamageOverTimeAlterationEffect cureEffect = new CureDamageOverTimeAlterationEffect(context);
@@ -145,7 +156,7 @@ public class DrinkPotionAuthoritySystem extends BaseComponentSystem {
                     break;
             }
 
-            checkDrink(event.getInstigator(), event.getItem(), p, e, pEffect);
+            checkDrink(event.getInstigator(), event.getItem(), p, e, pEffect, effectID);
         }
 
         audioManager.playSound(Assets.getSound("engine:drink").get(), 1.0f);

@@ -1,6 +1,6 @@
 {
     "BlockDropGrammar": {
-        "itemDrops": ["4*WorkstationCrafting:Brick"]
+        "itemDrops": ["6*WorkstationCrafting:Brick"]
     },
     "InteractionTarget": {},
     "InteractionScreen": {
@@ -76,8 +76,8 @@
         "maximumVolumes": [ 10 ]
     },
     "Health": {
-        "currentHealth": 5,
-        "maxHealth": 5,
+        "currentHealth": 20,
+        "maxHealth": 20,
         "regenRate": 1,
         "waitBeforeRegen": 2,
         "destroyEntityOnNoHealth": true
