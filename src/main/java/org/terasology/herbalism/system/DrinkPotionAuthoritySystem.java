@@ -16,14 +16,13 @@
 package org.terasology.herbalism.system;
 
 import org.terasology.alterationEffects.boost.HealthBoostAlterationEffect;
-import org.terasology.alterationEffects.boost.HealthBoostComponent;
+import org.terasology.alterationEffects.damageOverTime.CureAllDamageOverTimeAlterationEffect;
 import org.terasology.alterationEffects.damageOverTime.CureDamageOverTimeAlterationEffect;
 import org.terasology.alterationEffects.damageOverTime.DamageOverTimeAlterationEffect;
 import org.terasology.alterationEffects.regenerate.RegenerationAlterationEffect;
 import org.terasology.alterationEffects.speed.*;
 import org.terasology.audio.AudioManager;
 import org.terasology.context.Context;
-import org.terasology.entitySystem.Component;
 import org.terasology.entitySystem.entity.EntityRef;
 import org.terasology.entitySystem.event.ReceiveEvent;
 import org.terasology.entitySystem.systems.BaseComponentSystem;
@@ -44,9 +43,6 @@ import org.terasology.herbalism.events.DrinkPotionEvent;
 import org.terasology.logic.common.ActivateEvent;
 import org.terasology.registry.In;
 import org.terasology.utilities.Assets;
-
-import java.util.HashMap;
-import java.util.Map;
 
 @RegisterSystem(value = RegisterMode.AUTHORITY)
 public class DrinkPotionAuthoritySystem extends BaseComponentSystem {
@@ -134,6 +130,10 @@ public class DrinkPotionAuthoritySystem extends BaseComponentSystem {
                     JumpSpeedAlterationEffect jsEffect = new JumpSpeedAlterationEffect(context);
                     e = new AlterationEffectWrapperHerbEffect(jsEffect, 1f, 1f);
                     break;
+                case PotionCommonEffects.ITEM_USE_SPEED:
+                    ItemUseSpeedAlterationEffect itsEffect = new ItemUseSpeedAlterationEffect(context);
+                    e = new AlterationEffectWrapperHerbEffect(itsEffect, 1f, 1f);
+                    break;
                 case PotionCommonEffects.MULTI_JUMP:
                     MultiJumpAlterationEffect mjEffect = new MultiJumpAlterationEffect(context);
                     e = new AlterationEffectWrapperHerbEffect(mjEffect, 1f, 1f);
@@ -146,6 +146,11 @@ public class DrinkPotionAuthoritySystem extends BaseComponentSystem {
                 case PotionCommonEffects.CURE_POISON:
                     CureDamageOverTimeAlterationEffect cureEffect = new CureDamageOverTimeAlterationEffect(context);
                     e = new AlterationEffectWrapperHerbEffect(cureEffect, 1f, 1f);
+                    effectID = "PoisonPotion";
+                    break;
+                case PotionCommonEffects.CURE_ALL_AILMENTS:
+                    CureAllDamageOverTimeAlterationEffect cureAllEffect = new CureAllDamageOverTimeAlterationEffect(context);
+                    e = new AlterationEffectWrapperHerbEffect(cureAllEffect, 1f, 1f);
                     break;
                 case PotionCommonEffects.TEMP_MAX_HEALTH_BOOST:
                     HealthBoostAlterationEffect hBoostEffect = new HealthBoostAlterationEffect(context);

@@ -17,7 +17,7 @@ package org.terasology.herbalism.system;
 
 import com.google.common.base.Function;
 import org.terasology.alterationEffects.breath.WaterBreathingAlterationEffect;
-import org.terasology.alterationEffects.damageOverTime.CureDamageOverTimeAlterationEffect;
+import org.terasology.alterationEffects.damageOverTime.CureAllDamageOverTimeAlterationEffect;
 import org.terasology.alterationEffects.damageOverTime.DamageOverTimeAlterationEffect;
 import org.terasology.alterationEffects.regenerate.RegenerationAlterationEffect;
 import org.terasology.alterationEffects.speed.JumpSpeedAlterationEffect;
@@ -79,7 +79,7 @@ public class HerbalismCommonSystem extends BaseComponentSystem {
         herbEffectRegistry.registerHerbEffect(1f, new AlterationEffectWrapperHerbEffect(new JumpSpeedAlterationEffect(context), 1f, 1f));
         herbEffectRegistry.registerHerbEffect(1f, new AlterationEffectWrapperHerbEffect(new MultiJumpAlterationEffect(context), 1f, 1f));
         herbEffectRegistry.registerHerbEffect(1f, new AlterationEffectWrapperHerbEffect(new DamageOverTimeAlterationEffect(context), 1f, 1f));
-        herbEffectRegistry.registerHerbEffect(1f, new AlterationEffectWrapperHerbEffect(new CureDamageOverTimeAlterationEffect(context), 1f, 1f));
+        herbEffectRegistry.registerHerbEffect(1f, new AlterationEffectWrapperHerbEffect(new CureAllDamageOverTimeAlterationEffect(context), 1f, 1f));
 
         final HerbNameProvider herbNameProvider = new HerbNameProvider(worldProvider.getSeed().hashCode());
 

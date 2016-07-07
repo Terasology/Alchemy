@@ -24,10 +24,12 @@ public final class PotionCommonEffects {
 
     public static final String POISON = "POISON";
     public static final String CURE_POISON = "CURE_POISON";
+    public static final String CURE_ALL_AILMENTS = "CURE_ALL_AILMENTS";
 
     public static final String WALK_SPEED = "WALK";
     public static final String SWIM_SPEED = "SWIM";
     public static final String JUMP_SPEED = "JUMP";
+    public static final String ITEM_USE_SPEED = "ITEM_USE_SPEED";
 
     public static final String DAMAGE_REDUCE = "DAMAGE_REDUCE";
     public static final String FEATHER_FALL = "FEATHER_FALL";
