@@ -1,21 +1,21 @@
 {
     "parent": "engine:iconItem",
     "Item": {
-        "icon": "Alchemy:HealthHerb",
-        "stackId": "Alchemy:healingHerb"
+        "icon": "Alchemy:AntiPoisonHerb",
+        "stackId": "Alchemy:antiPoisonHerb"
     },
     "DisplayName": {
-        "name": "Healing Herb"
+        "name": "Anti-Poison Herb"
     },
     "Herb": { },
     "PredefinedHerb": {
-        "herbBaseGenome": "Alchemy:HealingHerb"
+        "herbBaseGenome": "Alchemy:AntiPoisonHerb"
     },
     "Genome": {
         "genomeId": "ABCDEFGHIJ",
         "genes": "12345"
     },
     "CraftingStationIngredient": {
-        "type": "Alchemy:healingHerb"
+        "type": "Alchemy:antiPoisonHerb"
     }
 }

@@ -8,8 +8,8 @@
         "name": "Regen Herb"
     },
     "Herb": { },
-    "GeneratedHerb": {
-        "herbBaseGenome": "BCDABCDABB"
+    "PredefinedHerb": {
+        "herbBaseGenome": "Alchemy:RegenHerb"
     },
     "Genome": {
         "genomeId": "ABCDEFGHIH",

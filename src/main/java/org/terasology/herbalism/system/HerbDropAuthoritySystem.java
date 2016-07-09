@@ -28,6 +28,7 @@ import org.terasology.herbalism.HerbGeneMutator;
 import org.terasology.herbalism.Herbalism;
 import org.terasology.herbalism.component.GeneratedHerbComponent;
 import org.terasology.herbalism.component.HerbComponent;
+import org.terasology.herbalism.component.PredefinedHerbComponent;
 import org.terasology.logic.health.DoDestroyEvent;
 import org.terasology.logic.inventory.InventoryManager;
 import org.terasology.logic.inventory.ItemComponent;
@@ -126,8 +127,28 @@ public class HerbDropAuthoritySystem extends BaseComponentSystem {
             herb.addComponent(genomeComponent);
 
             final ItemComponent item = herb.getComponent(ItemComponent.class);
-            item.icon = genomeManager.getGenomeProperty(herb, Herbalism.ICON_PROPERTY, TextureRegionAsset.class);
+            //item.icon = genomeManager.getGenomeProperty(herb, Herbalism.ICON_PROPERTY, TextureRegionAsset.class);
             herb.saveComponent(item);
+
+            if (shouldDropToWorld(event, blockDamageModifierComponent, herb)) {
+                createDrop(herb, locationComp.getWorldPosition(), false);
+            }
+        }
+    }
+
+    @ReceiveEvent
+    public void onPredefinedHerbDestroyed(DoDestroyEvent event, EntityRef entity, PredefinedHerbComponent herbComp, LocationComponent locationComp) {
+        BlockDamageModifierComponent blockDamageModifierComponent = event.getDamageType().getComponent(BlockDamageModifierComponent.class);
+        float chanceOfBlockDrop = 1;
+
+        if (blockDamageModifierComponent != null) {
+            chanceOfBlockDrop = 1 - blockDamageModifierComponent.blockAnnihilationChance;
+        }
+
+        if (random.nextFloat() < chanceOfBlockDrop) {
+            final Vector3f position = locationComp.getWorldPosition();
+
+            EntityRef herb = entityManager.create(herbComp.herbBaseGenome);
 
             if (shouldDropToWorld(event, blockDamageModifierComponent, herb)) {
                 createDrop(herb, locationComp.getWorldPosition(), false);

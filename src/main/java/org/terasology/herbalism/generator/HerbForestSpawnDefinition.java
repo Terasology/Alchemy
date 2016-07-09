@@ -27,8 +27,14 @@ import java.util.Arrays;
 @RegisterPlugin
 public class HerbForestSpawnDefinition extends StaticBlockFloraSpawnDefinition {
     public HerbForestSpawnDefinition() {
-        super(PlantType.GRASS, AnotherWorldBiomes.FOREST.getId(), 0.5f, 0.3f, "Alchemy:Herb",
+        super(PlantType.GRASS, AnotherWorldBiomes.FOREST.getId(), 0.5f, 0.8f, "Alchemy:Herb",
                 Arrays.asList(
+                        new BlockUri("Alchemy:AntiPoisonHerb"),
+                        new BlockUri("Alchemy:HealingHerb"),
+                        new BlockUri("Alchemy:PoisonHerb"),
+                        new BlockUri("Alchemy:RegenHerb"),
+                        new BlockUri("Alchemy:SwimSpeedHerb"),
+                        new BlockUri("Alchemy:WalkSpeedHerb"),
                         new BlockUri("Alchemy:HerbGeneratedA")/*,
                         new BlockUri("WorkstationCrafting:Herb2"),
                         new BlockUri("WorkstationCrafting:Herb3"),

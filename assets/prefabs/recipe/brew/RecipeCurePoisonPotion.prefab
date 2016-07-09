@@ -1,0 +1,18 @@
+{
+    "ProcessDefinition": {
+        "processType": "Alchemy:Herbalism"
+    },
+    "CraftingStationRecipe": {
+        "recipeId": "Alchemy:CurePoisonPotion",
+
+        "recipeComponents": ["2*Alchemy:AntiPoisonHerb"],
+        "recipeFluids": ["1*Fluid:Water"],
+        "requiredTemperature": 150,
+        "processingDuration": 3000,
+
+        "itemResult": "1*Alchemy:CurePoisonPotion"
+    },
+    "HerbalismStationRecipe": {
+        "recipeId": "Alchemy:CurePoisonPotion"
+    }
+}

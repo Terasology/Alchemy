@@ -1,0 +1,18 @@
+{
+    "ProcessDefinition": {
+        "processType": "Alchemy:Herbalism"
+    },
+    "CraftingStationRecipe": {
+        "recipeId": "Alchemy:DoubleJumpPotion",
+
+        "recipeComponents": ["1*Alchemy:WalkSpeedHerb", "1*Alchemy:SwimSpeedHerb"],
+        "recipeFluids": ["0.5*Fluid:Water"],
+        "requiredTemperature": 150,
+        "processingDuration": 3250,
+
+        "itemResult": "1*Alchemy:DoubleJumpPotion"
+    },
+    "HerbalismStationRecipe": {
+        "recipeId": "Alchemy:DoubleJumpPotion"
+    }
+}
