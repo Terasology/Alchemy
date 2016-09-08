@@ -3,16 +3,16 @@
         "processType": "Alchemy:Herbalism"
     },
     "CraftingStationRecipe": {
-        "recipeId": "Alchemy:PoisonPotion",
+        "recipeId": "Potions:PoisonPotion",
 
         "recipeComponents": ["2*Alchemy:PoisonHerb"],
         "recipeFluids": ["0.5*Fluid:Water"],
         "requiredTemperature": 150,
         "processingDuration": 3000,
 
-        "itemResult": "1*Alchemy:PoisonPotion"
+        "itemResult": "1*Potions:PoisonPotion"
     },
     "HerbalismStationRecipe": {
-        "recipeId": "Alchemy:PoisonPotion"
+        "recipeId": "Potions:PoisonPotion"
     }
 }

@@ -25,7 +25,7 @@ import org.terasology.genome.component.GenomeComponent;
 import org.terasology.genome.system.GenomeManager;
 import org.terasology.herbalism.Herbalism;
 import org.terasology.herbalism.component.HerbComponent;
-import org.terasology.herbalism.component.PotionComponent;
+import org.terasology.potions.component.PotionComponent;
 import org.terasology.registry.In;
 import org.terasology.rendering.nui.layers.ingame.inventory.GetItemTooltip;
 import org.terasology.rendering.nui.widgets.TooltipLine;

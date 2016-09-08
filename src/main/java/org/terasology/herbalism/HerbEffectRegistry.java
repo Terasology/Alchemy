@@ -15,6 +15,8 @@
  */
 package org.terasology.herbalism;
 
+import org.terasology.potions.HerbEffect;
+
 public interface HerbEffectRegistry {
     void registerHerbEffect(float rarity, HerbEffect herbEffect);
 

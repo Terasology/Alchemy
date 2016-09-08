@@ -18,6 +18,7 @@ package org.terasology.alchemy.system;
 import com.google.common.base.Predicate;
 import org.terasology.alchemy.Alchemy;
 import org.terasology.assets.ResourceUrn;
+import org.terasology.entitySystem.entity.EntityManager;
 import org.terasology.entitySystem.systems.RegisterSystem;
 import org.terasology.herbalism.ui.HerbalismCraftingStationRecipe;
 import org.terasology.entitySystem.entity.EntityRef;
@@ -53,6 +54,8 @@ public class RegisterAlchemyRecipes extends BaseComponentSystem {
     private BlockManager blockManager;
     @In
     private PrefabManager prefabManager;
+    @In
+    private EntityManager entityManager;
 
     @Override
     public void initialise() {
@@ -92,7 +95,7 @@ public class RegisterAlchemyRecipes extends BaseComponentSystem {
 
             workstationRegistry.registerProcess(Alchemy.HERBALISM_PROCESS_TYPE,
                     new CraftingWorkstationProcess(Alchemy.HERBALISM_PROCESS_TYPE, recipeComponent.recipeId,
-                            new HerbalismCraftingStationRecipe(recipeComponent)));
+                            new HerbalismCraftingStationRecipe(recipeComponent), prefab, entityManager));
         }
     }
 

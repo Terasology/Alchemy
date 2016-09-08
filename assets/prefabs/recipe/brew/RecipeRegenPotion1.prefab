@@ -3,16 +3,16 @@
         "processType": "Alchemy:Herbalism"
     },
     "CraftingStationRecipe": {
-        "recipeId": "Alchemy:RegenPotion",
+        "recipeId": "Potions:RegenPotion",
 
         "recipeComponents": ["2*Alchemy:RegenHerb"],
         "recipeFluids": ["0.5*Fluid:Water"],
         "requiredTemperature": 150,
         "processingDuration": 3000,
 
-        "itemResult": "1*Alchemy:RegenPotion"
+        "itemResult": "1*Potions:RegenPotion"
     },
     "HerbalismStationRecipe": {
-        "recipeId": "Alchemy:RegenPotion"
+        "recipeId": "Potions:RegenPotion"
     }
 }

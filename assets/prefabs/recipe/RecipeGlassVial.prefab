@@ -1,6 +1,6 @@
 {
     "ProcessDefinition": {
-        "processType": "WorkstationCrafting:BasicWoodcrafting"
+        "processType": "WorkstationCrafting:BasicWoodcraftingProcess"
     },
     "CraftingStationRecipe": {
         "recipeId": "Storage|Alchemy:GlassVial",

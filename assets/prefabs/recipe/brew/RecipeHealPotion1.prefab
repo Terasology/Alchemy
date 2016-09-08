@@ -3,16 +3,16 @@
         "processType": "Alchemy:Herbalism"
     },
     "CraftingStationRecipe": {
-        "recipeId": "Alchemy:HealPotion",
+        "recipeId": "Potions:HealPotion",
 
         "recipeComponents": ["2*Alchemy:HealingHerb"],
         "recipeFluids": ["0.5*Fluid:Water"],
         "requiredTemperature": 150,
         "processingDuration": 2500,
 
-        "itemResult": "1*Alchemy:HealPotion"
+        "itemResult": "1*Potions:HealPotion"
     },
     "HerbalismStationRecipe": {
-        "recipeId": "Alchemy:HealPotion"
+        "recipeId": "Potions:HealPotion"
     }
 }

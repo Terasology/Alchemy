@@ -3,16 +3,16 @@
         "processType": "Alchemy:Herbalism"
     },
     "CraftingStationRecipe": {
-        "recipeId": "Alchemy:WalkSpeedPotion",
+        "recipeId": "Potions:WalkSpeedPotion",
 
         "recipeComponents": ["2*Alchemy:WalkSpeedHerb"],
         "recipeFluids": ["0.5*Fluid:Water"],
         "requiredTemperature": 150,
         "processingDuration": 3000,
 
-        "itemResult": "1*Alchemy:WalkSpeedPotion"
+        "itemResult": "1*Potions:WalkSpeedPotion"
     },
     "HerbalismStationRecipe": {
-        "recipeId": "Alchemy:WalkSpeedPotion"
+        "recipeId": "Potions:WalkSpeedPotion"
     }
 }

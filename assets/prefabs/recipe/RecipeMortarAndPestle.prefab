@@ -1,6 +1,6 @@
 {
     "ProcessDefinition": {
-        "processType": "WorkstationCrafting:BasicStonecrafting"
+        "processType": "WorkstationCrafting:BasicStonecraftingProcess"
     },
     "CraftingStationRecipe": {
         "recipeId": "Tool|Alchemy:MortarAndPestle",

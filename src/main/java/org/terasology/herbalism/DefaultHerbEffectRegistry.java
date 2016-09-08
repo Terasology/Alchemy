@@ -18,6 +18,7 @@ package org.terasology.herbalism;
 import org.terasology.anotherWorld.util.ChanceRandomizer;
 import org.terasology.entitySystem.systems.BaseComponentSystem;
 import org.terasology.entitySystem.systems.RegisterSystem;
+import org.terasology.potions.HerbEffect;
 import org.terasology.registry.Share;
 
 @RegisterSystem
