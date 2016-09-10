@@ -1,6 +1,6 @@
 {
     "ProcessDefinition": {
-        "processType": "Alchemy:Herbalism"
+        "processType": "Alchemy:HerbalismProcess"
     },
     "CraftingStationRecipe": {
         "recipeId": "Potions:CureAllPotion",
@@ -14,5 +14,18 @@
     },
     "HerbalismStationRecipe": {
         "recipeId": "Potions:CureAllPotion"
+    },
+    "ProcessingTime": {
+        "duration": 8000
+    },
+    "InventoryInput": {
+        "itemCounts": {
+            "Alchemy:AntiPoisonHerb": 5
+        }
+    },
+    "InventoryOutput": {
+        "itemCounts": {
+            "Potions:CureAllPotion": 1
+        }
     }
 }

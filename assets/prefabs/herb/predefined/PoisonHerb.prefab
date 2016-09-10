@@ -17,5 +17,11 @@
     },
     "CraftingStationIngredient": {
         "type": "Alchemy:poisonHerb"
+    },
+    "ItemHelp": {
+        "category": "Alchemy",
+        "paragraphText": [
+            "A herb that contains some poisonous compounds."
+        ]
     }
 }

@@ -17,5 +17,11 @@
     },
     "CraftingStationIngredient": {
         "type": "Alchemy:regenHerb"
+    },
+    "ItemHelp": {
+        "category": "Alchemy",
+        "paragraphText": [
+            "A herb that contains some regeneration properties."
+        ]
     }
 }

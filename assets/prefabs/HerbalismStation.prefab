@@ -85,5 +85,12 @@
     "ActAsBlock": {
         "block": "WorkstationCrafting:StandardWoodStation"
     },
-    "DropBlockInventory": {}
+    "DropBlockInventory": {},
+    "ItemHelp": {
+        "category": "Alchemy",
+        "paragraphText": [
+            "A two-block station that allows the user to brew potions. Place two brick blocks next to each other, place two cobblestone eighth stone blocks on the top of each, and hit them with a mortar and pestle to build this station.",
+            "This station can be upgraded with 10 wood planks and an axe."
+        ]
+    }
 }

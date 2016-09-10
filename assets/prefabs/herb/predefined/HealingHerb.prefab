@@ -17,5 +17,11 @@
     },
     "CraftingStationIngredient": {
         "type": "Alchemy:healingHerb"
+    },
+    "ItemHelp": {
+        "category": "Alchemy",
+        "paragraphText": [
+            "A herb that has some immediate restoration properties."
+        ]
     }
 }

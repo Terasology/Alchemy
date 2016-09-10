@@ -1,6 +1,6 @@
 {
     "ProcessDefinition": {
-        "processType": "Alchemy:Herbalism"
+        "processType": "Alchemy:HerbalismProcess"
     },
     "CraftingStationRecipe": {
         "recipeId": "Potions:RegenPotion",
@@ -14,5 +14,18 @@
     },
     "HerbalismStationRecipe": {
         "recipeId": "Potions:RegenPotion"
+    },
+    "ProcessingTime": {
+        "duration": 3000
+    },
+    "InventoryInput": {
+        "itemCounts": {
+            "Alchemy:RegenHerb": 2
+        }
+    },
+    "InventoryOutput": {
+        "itemCounts": {
+            "Potions:RegenPotion": 1
+        }
     }
 }

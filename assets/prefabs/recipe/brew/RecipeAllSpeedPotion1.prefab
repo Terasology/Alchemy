@@ -1,6 +1,6 @@
 {
     "ProcessDefinition": {
-        "processType": "Alchemy:Herbalism"
+        "processType": "Alchemy:HerbalismProcess"
     },
     "CraftingStationRecipe": {
         "recipeId": "Potions:AllSpeedPotion",
@@ -14,5 +14,20 @@
     },
     "HerbalismStationRecipe": {
         "recipeId": "Potions:AllSpeedPotion"
+    },
+    "ProcessingTime": {
+        "duration": 6000
+    },
+    "InventoryInput": {
+        "itemCounts": {
+            "Alchemy:WalkSpeedHerb": 2,
+            "Alchemy:SwimSpeedHerb": 2,
+            "Alchemy:JumpSpeedHerb": 2
+        }
+    },
+    "InventoryOutput": {
+        "itemCounts": {
+            "Potions:AllSpeedPotion": 1
+        }
     }
 }

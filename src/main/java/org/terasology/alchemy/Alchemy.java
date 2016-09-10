@@ -16,7 +16,8 @@
 package org.terasology.alchemy;
 
 public final class Alchemy {
-    public static final String HERBALISM_PROCESS_TYPE = "Alchemy:Herbalism";
+    //public static final String HERBALISM_PROCESS_TYPE = "Alchemy:Herbalism";
+    public static final String HERBALISM_PROCESS_TYPE = "Alchemy:HerbalismProcess";
 
     private Alchemy() {
     }

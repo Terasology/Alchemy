@@ -18,5 +18,11 @@
     },
     "CraftInHandIngredient": {
         "componentType": "Alchemy:mortarAndPestle"
+    },
+    "ItemHelp": {
+        "category": "Alchemy",
+        "paragraphText": [
+            "Used to crush and grind ingredients and substances into fine pastes or powders."
+        ]
     }
 }

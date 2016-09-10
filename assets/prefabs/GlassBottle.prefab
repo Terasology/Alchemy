@@ -19,5 +19,11 @@
     },
     "CraftingStationIngredient": {
         "type": "Alchemy:glassBottle"
+    },
+    "ItemHelp": {
+        "category": "Alchemy",
+        "paragraphText": [
+            "Used for storing fluids such as potions or water."
+        ]
     }
 }

@@ -1,6 +1,6 @@
 {
     "ProcessDefinition": {
-        "processType": "Alchemy:Herbalism"
+        "processType": "Alchemy:HerbalismProcess"
     },
     "CraftingStationRecipe": {
         "recipeId": "Potions:HealPotion",
@@ -14,5 +14,18 @@
     },
     "HerbalismStationRecipe": {
         "recipeId": "Potions:HealPotion"
+    },
+    "ProcessingTime": {
+        "duration": 2500
+    },
+    "InventoryInput": {
+        "itemCounts": {
+            "Alchemy:HealingHerb": 2
+        }
+    },
+    "InventoryOutput": {
+        "itemCounts": {
+            "Potions:HealPotion": 1
+        }
     }
 }

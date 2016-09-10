@@ -19,5 +19,11 @@
     },
     "CraftingStationIngredient": {
         "type": "Alchemy:glassVial"
+    },
+    "ItemHelp": {
+        "category": "Alchemy",
+        "paragraphText": [
+            "Used for storing extracts or small amounts of chemicals."
+        ]
     }
 }

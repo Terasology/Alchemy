@@ -9,5 +9,23 @@
         "recipeTools": ["1*hammer"],
 
         "itemResult": "1*Alchemy:MortarAndPestle"
+    },
+    "ProcessingTime": {
+        "duration": 1000
+    },
+    "RequirementInput": {
+        "requirements": [
+            "Hammer"
+        ]
+    },
+    "InventoryInput": {
+        "itemCounts": {
+            "WorkstationCrafting:clay": 3
+        }
+    },
+    "InventoryOutput": {
+        "itemCounts": {
+            "Alchemy:MortarAndPestle": 1
+        }
     }
 }

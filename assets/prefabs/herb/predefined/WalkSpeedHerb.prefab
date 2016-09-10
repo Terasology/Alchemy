@@ -17,5 +17,11 @@
     },
     "CraftingStationIngredient": {
         "type": "Alchemy:walkSpeedHerb"
+    },
+    "ItemHelp": {
+        "category": "Alchemy",
+        "paragraphText": [
+            "A herb that contains some properties which make it interact with land."
+        ]
     }
 }

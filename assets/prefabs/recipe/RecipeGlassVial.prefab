@@ -9,5 +9,23 @@
         "recipeTools": ["1*hammer"],
 
         "itemResult": "1*Alchemy:GlassVial"
+    },
+    "ProcessingTime": {
+        "duration": 1000
+    },
+    "RequirementInput": {
+        "requirements": [
+            "Hammer"
+        ]
+    },
+    "InventoryInput": {
+        "itemCounts": {
+            "WorkstationCrafting:glass": 1
+        }
+    },
+    "InventoryOutput": {
+        "itemCounts": {
+            "Alchemy:GlassVial": 1
+        }
     }
 }

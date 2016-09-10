@@ -1,6 +1,6 @@
 {
     "ProcessDefinition": {
-        "processType": "Alchemy:Herbalism"
+        "processType": "Alchemy:HerbalismProcess"
     },
     "CraftingStationRecipe": {
         "recipeId": "Potions:PoisonPotion",
@@ -14,5 +14,18 @@
     },
     "HerbalismStationRecipe": {
         "recipeId": "Potions:PoisonPotion"
+    },
+    "ProcessingTime": {
+        "duration": 3000
+    },
+    "InventoryInput": {
+        "itemCounts": {
+            "Alchemy:PoisonHerb": 2
+        }
+    },
+    "InventoryOutput": {
+        "itemCounts": {
+            "Potions:PoisonPotion": 1
+        }
     }
 }
