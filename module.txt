@@ -18,6 +18,10 @@
                 "minVersion" : "0.2.0"
             },
             {
+                "id": "Durability",
+                "minVersion": "0.1.0"
+            },
+            {
                 "id" : "WorkstationCrafting",
                 "minVersion" : "0.1.0"
             },

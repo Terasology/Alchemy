@@ -19,7 +19,7 @@
         "supportedProcessTypes": {
             "Machines:Furnace": true,
             "Workstation:FillFluid": true,
-            "Alchemy:Herbalism": false
+            "Alchemy:HerbalismProcess": false
         }
     },
     "WorkstationInventory": {

@@ -8,7 +8,7 @@
         "recipeComponents": ["3*WorkstationCrafting:glass"],
         "recipeTools": ["1*hammer"],
 
-        "itemResult": "1*Alchemy:GlassBottle"
+        "itemResult": "1*Potions:GlassBottle"
     },
     "ProcessingTime": {
         "duration": 1000
@@ -25,7 +25,7 @@
     },
     "InventoryOutput": {
         "itemCounts": {
-            "Alchemy:GlassBottle": 1
+            "Potions:GlassBottle": 1
         }
     }
 }
