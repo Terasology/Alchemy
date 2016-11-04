@@ -16,6 +16,7 @@
 package org.terasology.herbalism.system;
 
 import com.google.common.base.Predicate;
+import org.terasology.potions.component.EmptyPotionComponent;
 import org.terasology.workstationCrafting.component.CraftingStationIngredientComponent;
 import org.terasology.entitySystem.entity.EntityRef;
 import org.terasology.herbalism.component.HerbComponent;
@@ -30,10 +31,11 @@ public class HerbalismStationIngredientPredicate implements Predicate<EntityRef>
     @Override
     public boolean apply(EntityRef input) {
         HerbComponent hComponent = input.getComponent(HerbComponent.class);
+        EmptyPotionComponent epComponent = input.getComponent(EmptyPotionComponent.class);
         CraftingStationIngredientComponent component = input.getComponent(CraftingStationIngredientComponent.class);
 
-        // If this contains a valid instance of HerbComponent, CraftingStationIngredientComponent and the input's
-        // type matches the itemType of this predicate.
-        return hComponent != null && component != null && component.type.equalsIgnoreCase(itemType);
+        // If this contains a valid instance of (HerbComponent or EmptyPotionComponent, CraftingStationIngredientComponent,
+        // and the input's type matches the itemType of this predicate, return true.
+        return (hComponent != null || epComponent != null) && component != null && component.type.equalsIgnoreCase(itemType);
     }
 }

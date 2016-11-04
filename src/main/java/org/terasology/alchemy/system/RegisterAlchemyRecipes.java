@@ -93,6 +93,8 @@ public class RegisterAlchemyRecipes extends BaseComponentSystem {
         for (Prefab prefab : prefabManager.listPrefabs(HerbalismStationRecipeComponent.class)) {
             CraftingStationRecipeComponent recipeComponent = prefab.getComponent(CraftingStationRecipeComponent.class);
 
+            // We individually register each process instead of using registerProcessFactory (with CraftingWorkstationProcessFactory)
+            // as we need to add in some custom actions. The createProcess method in CraftingWorkstationProcessFactory won't do.
             workstationRegistry.registerProcess(Alchemy.HERBALISM_PROCESS_TYPE,
                     new CraftingWorkstationProcess(Alchemy.HERBALISM_PROCESS_TYPE, recipeComponent.recipeId,
                             new HerbalismCraftingStationRecipe(recipeComponent), prefab, entityManager));

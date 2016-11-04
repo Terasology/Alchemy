@@ -5,7 +5,7 @@
     "CraftingStationRecipe": {
         "recipeId": "Potions:HealPotion",
 
-        "recipeComponents": ["2*Alchemy:HealingHerb"],
+        "recipeComponents": ["1*Potions:glassBottle", "2*Alchemy:HealingHerb"],
         "recipeFluids": ["0.5*Fluid:Water"],
         "requiredTemperature": 150,
         "processingDuration": 2500,
@@ -20,6 +20,7 @@
     },
     "InventoryInput": {
         "itemCounts": {
+            "Potions:GlassBottle": 1,
             "Alchemy:HealingHerb": 2
         }
     },
