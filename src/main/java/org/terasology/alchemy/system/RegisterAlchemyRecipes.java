@@ -42,6 +42,7 @@ import org.terasology.workstation.system.WorkstationRegistry;
 import org.terasology.world.block.BlockManager;
 import org.terasology.world.block.BlockUri;
 
+// This system registers all of the Alchemy recipes in this module.
 @RegisterSystem
 public class RegisterAlchemyRecipes extends BaseComponentSystem {
     @In
@@ -57,23 +58,18 @@ public class RegisterAlchemyRecipes extends BaseComponentSystem {
     @In
     private EntityManager entityManager;
 
+    // Initialization phase.
     @Override
     public void initialise() {
+        // Register the process factory for generic Herbalism process recipes that don't use the Herbalism Station.
         workstationRegistry.registerProcessFactory(Alchemy.HERBALISM_PROCESS_TYPE, new CraftingWorkstationProcessFactory());
 
         addWorkstationFormingRecipes();
 
-        //addCraftInHandRecipes();
-
         addHerbalismWorkstationRecipes();
-
-        //addWoodPlankRecipes();
-
-        //addStandardWoodWorkstationBlockShapeRecipes();
-
-        //addBasicStoneWorkstationBlockShapeRecipes();
     }
 
+    // Add the recipe for building the Herbalism Station.
     private void addWorkstationFormingRecipes() {
         LayeredMultiBlockFormItemRecipe herbalismStationRecipe = new LayeredMultiBlockFormItemRecipe(
                 new ToolTypeEntityFilter("mortarAndPestle"), new Basic2DSizeFilter(3, 1), new AnyActivityFilter(),
@@ -91,6 +87,7 @@ public class RegisterAlchemyRecipes extends BaseComponentSystem {
 
         // Add all the recipes marked with "HerbalismStationRecipeComponent" in their prefabs and add them to the list.
         for (Prefab prefab : prefabManager.listPrefabs(HerbalismStationRecipeComponent.class)) {
+            // Get the Crafting Station recipe component of this recipe prefab.
             CraftingStationRecipeComponent recipeComponent = prefab.getComponent(CraftingStationRecipeComponent.class);
 
             // We individually register each process instead of using registerProcessFactory (with CraftingWorkstationProcessFactory)
@@ -101,6 +98,7 @@ public class RegisterAlchemyRecipes extends BaseComponentSystem {
         }
     }
 
+    // This internal predicate class is used to filter out incompatiable crafting station types.
     private final class StationTypeFilter implements Predicate<EntityRef> {
         private String stationType;
 

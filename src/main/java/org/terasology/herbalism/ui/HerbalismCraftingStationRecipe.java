@@ -19,11 +19,8 @@ import com.google.common.base.Predicate;
 import org.terasology.durability.components.DurabilityComponent;
 import org.terasology.entitySystem.entity.EntityRef;
 import org.terasology.entitySystem.prefab.Prefab;
-import org.terasology.logic.inventory.InventoryManager;
-import org.terasology.logic.inventory.InventoryUtils;
 import org.terasology.potions.component.EmptyPotionComponent;
 import org.terasology.potions.component.PotionComponent;
-import org.terasology.protobuf.EntityData;
 import org.terasology.workstationCrafting.component.CraftingStationRecipeComponent;
 import org.terasology.workstationCrafting.system.recipe.behaviour.ConsumeFluidBehaviour;
 import org.terasology.workstationCrafting.system.recipe.behaviour.ConsumeItemCraftBehaviour;
@@ -34,7 +31,6 @@ import org.terasology.workstationCrafting.system.recipe.workstation.AbstractWork
 import org.terasology.genome.component.GenomeComponent;
 import org.terasology.genome.system.GenomeManager;
 import org.terasology.herbalism.Herbalism;
-import org.terasology.herbalism.component.HerbComponent;
 import org.terasology.herbalism.system.HerbalismClientSystem;
 import org.terasology.herbalism.system.HerbalismStationIngredientPredicate;
 import org.terasology.registry.CoreRegistry;
@@ -43,91 +39,36 @@ import org.terasology.rendering.nui.widgets.TooltipLine;
 import org.terasology.utilities.Assets;
 
 import java.util.Arrays;
-import java.util.LinkedList;
 import java.util.List;
 
-// A custom crafting station recipe was used
+// A custom workstation recipe format for herbalism related recipes. Note that this is only intended to be used with the HerbalismCraftingStations.
+// Potions specifically.
 public class HerbalismCraftingStationRecipe extends AbstractWorkstationRecipe {
-    public HerbalismCraftingStationRecipe() {
-        Predicate<EntityRef> herbComponentPredicate = new Predicate<EntityRef>() {
-            @Override
-            public boolean apply(EntityRef input) {
-                return input.hasComponent(HerbComponent.class);
-            }
-        };
-        addIngredientBehaviour(new ConsumeHerbIngredientBehaviour(herbComponentPredicate, 1, new InventorySlotTypeResolver("INPUT")));
-        addFluidBehaviour(new ConsumeFluidBehaviour("Fluid:Water", 0.2f, new InventorySlotTypeResolver("FLUID_INPUT")));
-        setRequiredHeat(95f);
-        setProcessingDuration(10000);
-        setResultFactory(new PotionRecipeResultFactory(Assets.getPrefab("Alchemy:HerbPotion").get(), 1));
-    }
-
-    public HerbalismCraftingStationRecipe(String prefabPath, String toolTip) {
-        Predicate<EntityRef> herbComponentPredicate = new Predicate<EntityRef>() {
-            @Override
-            public boolean apply(EntityRef input) {
-                return input.hasComponent(HerbComponent.class);
-            }
-        };
-        addIngredientBehaviour(new ConsumeHerbIngredientBehaviour(herbComponentPredicate, 1, new InventorySlotTypeResolver("INPUT")));
-        addFluidBehaviour(new ConsumeFluidBehaviour("Fluid:Water", 0.2f, new InventorySlotTypeResolver("FLUID_INPUT")));
-        setRequiredHeat(95f);
-        setProcessingDuration(10000);
-        setResultFactory(new PotionRecipeResultFactory(Assets.getPrefab(prefabPath).get(), toolTip, 1));
-    }
-
-    public HerbalismCraftingStationRecipe(String prefabPath, String displayName, float requiredTemperature, long processingDuration) {
-        Predicate<EntityRef> herbComponentPredicate = new Predicate<EntityRef>() {
-            @Override
-            public boolean apply(EntityRef input) {
-                return input.hasComponent(HerbComponent.class);
-            }
-        };
-        addIngredientBehaviour(new ConsumeHerbIngredientBehaviour(herbComponentPredicate, 1, new InventorySlotTypeResolver("INPUT")));
-        addFluidBehaviour(new ConsumeFluidBehaviour("Fluid:Water", 0.2f, new InventorySlotTypeResolver("FLUID_INPUT")));
-        setRequiredHeat(requiredTemperature);
-        setProcessingDuration(processingDuration);
-        setResultFactory(new PotionRecipeResultFactory(Assets.getPrefab(prefabPath).get(), displayName, 1));
-    }
-
-    public HerbalismCraftingStationRecipe(String prefabPath, String displayName, List<String> recipeComponents, float requiredTemperature, long processingDuration) {
-        Predicate<EntityRef> herbComponentPredicate = new Predicate<EntityRef>() {
-            @Override
-            public boolean apply(EntityRef input) {
-                return input.hasComponent(HerbComponent.class);
-            }
-        };
-
-        for (String component : recipeComponents) {
-            String[] split = component.split("\\*");
-            int count = Integer.parseInt(split[0]);
-            String type = split[1];
-            addIngredientBehaviour(new ConsumeHerbIngredientBehaviour(herbComponentPredicate, count, new InventorySlotTypeResolver("INPUT")));
-        }
-
-        addFluidBehaviour(new ConsumeFluidBehaviour("Fluid:Water", 0.2f, new InventorySlotTypeResolver("FLUID_INPUT")));
-        setRequiredHeat(requiredTemperature);
-        setProcessingDuration(processingDuration);
-        setResultFactory(new PotionRecipeResultFactory(Assets.getPrefab(prefabPath).get(), displayName, 1));
-    }
-
+    // Creates the Herbalism Crafting Station's recipe based on the assigned CraftingStationRecipeComponent (i.e. the recipe parameters).
     public HerbalismCraftingStationRecipe(CraftingStationRecipeComponent recipe) {
-        Predicate<EntityRef> herbComponentPredicate = new Predicate<EntityRef>() {
-            @Override
-            public boolean apply(EntityRef input) {
-                return input.hasComponent(HerbComponent.class);
-            }
-        };
-
         // Check to see if the first item in this recipe is a potion container.
         // TODO: Make it so that it doesn't matter where in the recipe the potion bottle is.
-        String oldPotionContainerName = recipe.recipeComponents.get(0).split("\\*")[1];
-        Prefab potionTest = Assets.getPrefab(oldPotionContainerName).get();
+        String oldPotionContainerName = "";// = recipe.recipeComponents.get(0).split("\\*")[1];
+        /*Prefab potionTest = Assets.getPrefab(oldPotionContainerName).get();
         if (!potionTest.hasComponent(EmptyPotionComponent.class)) {
             oldPotionContainerName = "";
         }
+        */
 
-        // Add the fluid behavior and required heat and duration.
+        // Search through the recipe components to find the first empty potion bottle. If it's found, break out of the loop.
+        // Otherwise, the oldPotionContainerName will be an empty string.
+        for (String component : recipe.recipeComponents) {
+            oldPotionContainerName = component.split("\\*")[1];
+            Prefab potionTest = Assets.getPrefab(oldPotionContainerName).get();
+            if (potionTest != null && !potionTest.hasComponent(EmptyPotionComponent.class)) {
+                break;
+            }
+            else {
+                oldPotionContainerName = "";
+            }
+        }
+
+        // Add the fluid behavior and required heat and duration based on the recipe's parameters.
         addFluidBehaviour(new ConsumeFluidBehaviour("Fluid:Water", 0.2f, new InventorySlotTypeResolver("FLUID_INPUT")));
         setRequiredHeat(recipe.requiredTemperature);
         setProcessingDuration(recipe.processingDuration);
@@ -136,52 +77,57 @@ public class HerbalismCraftingStationRecipe extends AbstractWorkstationRecipe {
         PotionRecipeResultFactory potionRecipeResultFactory = new PotionRecipeResultFactory(Assets.getPrefab(recipe.recipeId).get(), recipe.itemResult.split("\\*")[1], 1, oldPotionContainerName);
         setResultFactory(potionRecipeResultFactory);
 
+        // Add each of the ingredient (consumption) behaviors by parsing through the recipe components.
         for (String component : recipe.recipeComponents) {
             String[] split = component.split("\\*");
             int count = Integer.parseInt(split[0]);
             String type = split[1];
 
-            //addIngredientBehaviour(new ConsumeHerbIngredientBehaviour(herbComponentPredicate, count, new InventorySlotTypeResolver("INPUT")));
-
             // If the first item in this recipe is an empty potion container, add it as a ConsumePotionContainerBehaviour.
             if (!oldPotionContainerName.equals("")) {
                 addIngredientBehaviour(new ConsumePotionContainerBehaviour(new HerbalismStationIngredientPredicate(type), count, new InventorySlotTypeResolver("INPUT"), potionRecipeResultFactory));
             }
+            // Otherwise, add it as a herb.
             else {
                 addIngredientBehaviour(new ConsumeHerbIngredientBehaviour(new HerbalismStationIngredientPredicate(type), count, new InventorySlotTypeResolver("INPUT")));
             }
-
         }
     }
 
+    // This internal class is used for creating and defining the resultant potion.
     private final class PotionRecipeResultFactory extends ItemRecipeResultFactory {
-        private String toolTip;
-        private String oldPotionContainerName;
-        private EntityRef potionBottleRef;
+        private String toolTip;                 // Potion's tooltip
+        private String oldPotionContainerName = "";  // Name of the potion's container to be used.
+        private EntityRef potionBottleRef;      // Reference to the current potion bottle.
 
-        private DurabilityComponent lastDurability;
-        private String lastPotionBottleName;
+        private DurabilityComponent lastDurability; // Reference to the last potion bottle's durability.
+        private String lastPotionBottleName = "";        // Name of the last potion bottle used.
 
+        // Set the reference to the current potion bottle.
         public void setPotionBottleRef(EntityRef ref) {
             potionBottleRef = ref;
         }
 
+        // Constructor for when the potion doesn't use bottles and the toolTip can be the default one.
         private PotionRecipeResultFactory(Prefab prefab, int count) {
             super(prefab, count);
             toolTip = "Herb Potion";
         }
 
+        // Constructor for when the potion doesn't use bottles but the toolTip needs to be replaced.
         private PotionRecipeResultFactory(Prefab prefab, String toolTip, int count) {
             super(prefab, count);
             this.toolTip = toolTip;
         }
 
+        // Constructor for when the potion uses bottles.
         private PotionRecipeResultFactory(Prefab prefab, String toolTip, int count, String oldContainerName) {
             super(prefab, count);
             this.toolTip = toolTip;
             oldPotionContainerName = oldContainerName;
         }
 
+        // Setup the display of the resultant item. This includes the icon and description text.
         @Override
         public void setupDisplay(List<String> parameters, ItemIcon itemIcon) {
             super.setupDisplay(parameters, itemIcon);
@@ -200,6 +146,7 @@ public class HerbalismCraftingStationRecipe extends AbstractWorkstationRecipe {
         // Create the resultant potion (item) here.
         @Override
         public EntityRef createResult(List<String> parameters, int multiplier) {
+            // Extract the herb parameters.
             final EntityRef result = super.createResult(parameters, multiplier);
             final String herbParameter = parameters.get(0);
             final String[] herbSplit = herbParameter.split("\\|");
@@ -213,7 +160,7 @@ public class HerbalismCraftingStationRecipe extends AbstractWorkstationRecipe {
                 genes = herbSplit[2];
             }
 
-            // Add the gneom component to the resultant item.
+            // Add the genome component to the resultant item.
             GenomeComponent genome = new GenomeComponent();
             genome.genomeId = genomeId;
             genome.genes = genes;
@@ -225,22 +172,39 @@ public class HerbalismCraftingStationRecipe extends AbstractWorkstationRecipe {
                 if (!oldPotionContainerName.equals("")) {
                     DurabilityComponent potionBottleDurabilityComponent = null;
 
-                    if (potionBottleRef.exists()) {
+                    // If the current potion bottle ref exists, then copy the durability and name over to the appropriate instance
+                    // variables.
+                    if (potionBottleRef != null && potionBottleRef.exists()) {
                         potionBottleDurabilityComponent = potionBottleRef.getComponent(DurabilityComponent.class);
                         lastDurability = potionBottleDurabilityComponent;
                         lastPotionBottleName = potionBottleRef.getParentPrefab().getUrn().toString();
                         potionComponent.bottlePrefab = lastPotionBottleName;
                     }
+                    // Otherwise, use the last durability value as the potionBottleDurabilityComponent - i.e., the one to be
+                    // used for this potion. This is necessary as when there's only one bottle in the workstation input,
+                    // consuming it will cause the potionBottleRef to become non-existent. Hence, why I'm using the last
+                    // known values instead.
                     else {
                         potionBottleDurabilityComponent = lastDurability;
                     }
 
-                    potionComponent.bottlePrefab = lastPotionBottleName;
+                    // Set the bottle prefab of the resultant potion to be the last known potion bottle name.
+                    // It's either taken from the entity ref, or from the recipe parameters list if the former is empty.
+                    if (!lastPotionBottleName.equals("")) {
+                        potionComponent.bottlePrefab = lastPotionBottleName;
+                    }
+                    else {
+                        potionComponent.bottlePrefab = oldPotionContainerName;
+                    }
 
-                    DurabilityComponent durabilityComponent = new DurabilityComponent();
-                    durabilityComponent.durability = potionBottleDurabilityComponent.durability;
-                    durabilityComponent.maxDurability = potionBottleDurabilityComponent.maxDurability;
-                    result.addComponent(durabilityComponent);
+                    // Create a new Durability component, and copy over the values from the old bottle's Durability component,
+                    // as long as the last durability exists. Lastly, add this new component to the resultant potion.
+                    if (potionBottleDurabilityComponent != null) {
+                        DurabilityComponent durabilityComponent = new DurabilityComponent();
+                        durabilityComponent.durability = potionBottleDurabilityComponent.durability;
+                        durabilityComponent.maxDurability = potionBottleDurabilityComponent.maxDurability;
+                        result.addComponent(durabilityComponent);
+                    }
                 }
             }
 
@@ -248,14 +212,19 @@ public class HerbalismCraftingStationRecipe extends AbstractWorkstationRecipe {
         }
     }
 
+    // This internal class is used to define the custom consumption behavior of potion bottles during crafting.
     private final class ConsumePotionContainerBehaviour extends ConsumeItemCraftBehaviour {
+        // Reference to the potion crafting result factory.
         private PotionRecipeResultFactory potionRecipeResultFactory;
 
+        // Constructor.
         private ConsumePotionContainerBehaviour(Predicate<EntityRef> matcher, int count, InventorySlotResolver resolver, PotionRecipeResultFactory potionRecipeResultFactory) {
             super(matcher, count, resolver);
             this.potionRecipeResultFactory = potionRecipeResultFactory;
         }
 
+        // Get the ingredient parameters and where they are located in the workstation's inventory, and return them as a String.
+        // If the current item being checked is an empty potion bottle, give the result factory class that information.
         @Override
         protected String getParameter(List<Integer> slots, EntityRef item) {
             if (item.hasComponent(EmptyPotionComponent.class)) {
@@ -263,18 +232,16 @@ public class HerbalismCraftingStationRecipe extends AbstractWorkstationRecipe {
             }
             return super.getParameter(slots, item);
         }
-
-        @Override
-        public void processIngredient(EntityRef instigator, EntityRef entity, String parameter, int multiplier) {
-            super.processIngredient(instigator, entity, parameter, multiplier);
-        }
     }
 
+    // This internal class is used to define the custom consumption behavior of herbs during crafting.
     private final class ConsumeHerbIngredientBehaviour extends ConsumeItemCraftBehaviour {
         private ConsumeHerbIngredientBehaviour(Predicate<EntityRef> matcher, int count, InventorySlotResolver resolver) {
             super(matcher, count, resolver);
         }
 
+        // Get the ingredient parameters and where they are located in the workstation's inventory, and return them as a String.
+        // If possible, add the genome parameters of the herbs to the parameter String.
         @Override
         protected String getParameter(List<Integer> slots, EntityRef item) {
             final GenomeComponent genome = item.getComponent(GenomeComponent.class);
@@ -282,6 +249,7 @@ public class HerbalismCraftingStationRecipe extends AbstractWorkstationRecipe {
             return super.getParameter(slots, item) + "|" + genome.genomeId + "|" + genome.genes + "|" + herbName;
         }
 
+        // Return an integer list of workstation inventory slots this herb is present in.
         @Override
         protected List<Integer> getSlots(String parameter) {
             return super.getSlots(parameter.substring(0, parameter.indexOf('|')));
