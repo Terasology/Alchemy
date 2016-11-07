@@ -24,8 +24,14 @@ import org.terasology.world.generator.plugin.RegisterPlugin;
 
 import java.util.Arrays;
 
+/**
+ * This plugin defines how herbs should spawn in forest biomes.
+ */
 @RegisterPlugin
 public class HerbForestSpawnDefinition extends StaticBlockFloraSpawnDefinition {
+    /**
+     * Define the forest biome herb spawn details.
+     */
     public HerbForestSpawnDefinition() {
         super(PlantType.GRASS, AnotherWorldBiomes.FOREST.getId(), 0.5f, 0.8f, "Alchemy:Herb",
                 Arrays.asList(

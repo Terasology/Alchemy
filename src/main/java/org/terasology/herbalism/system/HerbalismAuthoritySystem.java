@@ -36,6 +36,9 @@ import org.terasology.world.WorldProvider;
 import org.terasology.world.block.Block;
 import org.terasology.world.block.BlockComponent;
 
+/**
+ * Authority system for Herbalism. Specifically for the planting and pollination of herb species.
+ */
 @RegisterSystem(value = RegisterMode.AUTHORITY)
 public class HerbalismAuthoritySystem extends BaseComponentSystem {
     @In
@@ -45,6 +48,13 @@ public class HerbalismAuthoritySystem extends BaseComponentSystem {
     @In
     private BlockEntityRegistry blockEntityRegistry;
 
+    /**
+     * When an herb is planted, add a genome component to it.
+     *
+     * @param event             Details of the herb seed being planted.
+     * @param seedItem          The herb seed item itself.
+     * @param genomeComponent   The genome component to be added onto the planted seed entity.
+     */
     @ReceiveEvent
     public void herbPlanted(SeedPlanted event, EntityRef seedItem, GenomeComponent genomeComponent) {
         Vector3i location = event.getLocation();
@@ -57,6 +67,15 @@ public class HerbalismAuthoritySystem extends BaseComponentSystem {
         plantedEntity.addComponent(genome);
     }
 
+    /**
+     * For every RandomUpdateEvent, manages how a herb will pollinate. This will work for herbs that are slated
+     *
+     * @param event                     Details of the random update.
+     * @param herb                      The herb item in question being updated.
+     * @param genome                    Genome of the herb.
+     * @param pollinatingHerbComponent  Details of the herb's pollination.
+     * @param block                     The herb plant's block component. This is physically where the herb is located on the world.
+     */
     @ReceiveEvent
     public void herbPollination(RandomUpdateEvent event, EntityRef herb, GenomeComponent genome, PollinatingHerbComponent pollinatingHerbComponent, BlockComponent block) {
         Vector3i blockPosition = block.getPosition();

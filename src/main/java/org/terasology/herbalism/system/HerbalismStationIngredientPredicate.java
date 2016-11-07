@@ -21,13 +21,28 @@ import org.terasology.workstationCrafting.component.CraftingStationIngredientCom
 import org.terasology.entitySystem.entity.EntityRef;
 import org.terasology.herbalism.component.HerbComponent;
 
+/**
+ * This predicate class is used to filter out items that are not compatible with HerbalismStations.
+ */
 public class HerbalismStationIngredientPredicate implements Predicate<EntityRef> {
+    /** Item type to check for. */
     private String itemType;
 
+    /**
+     * Define what item type this filter should look for.
+     *
+     * @param itemType   Item type name being filtered.
+     */
     public HerbalismStationIngredientPredicate(String itemType) {
         this.itemType = itemType;
     }
 
+    /**
+     * Apply an entity to this filter to see if it's compatible with HerbalismStations and it has the same item type.
+     *
+     * @param input    Reference to the entity being checked.
+     * @return         True if the entity fulfills the above conditions. False if not.
+     */
     @Override
     public boolean apply(EntityRef input) {
         HerbComponent hComponent = input.getComponent(HerbComponent.class);

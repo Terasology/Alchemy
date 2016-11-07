@@ -19,10 +19,19 @@ import org.terasology.registry.CoreRegistry;
 import org.terasology.world.block.Block;
 import org.terasology.world.block.BlockManager;
 
+/**
+ * A utility class used for simplifying getting blocks from the BlockManager.
+ */
 public final class Blocks {
     private Blocks() {
     }
 
+    /**
+     * Gets a block from the BlockManager using the blockID.
+     *
+     * @param blockId   ID of the block.
+     * @return          The block type with the matching ID.
+     */
     public static Block getBlock(String blockId) {
         return CoreRegistry.get(BlockManager.class).getBlock(blockId);
     }

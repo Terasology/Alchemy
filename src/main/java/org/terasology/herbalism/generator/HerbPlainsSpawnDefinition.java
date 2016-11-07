@@ -25,10 +25,13 @@ import org.terasology.world.generator.plugin.RegisterPlugin;
 import java.util.Arrays;
 
 /**
- * @author Marcin Sciesinski <marcins78@gmail.com>
+ * This plugin defines how herbs should spawn in plains biomes.
  */
 @RegisterPlugin
 public class HerbPlainsSpawnDefinition extends StaticBlockFloraSpawnDefinition {
+    /**
+     * Define the plains biome herb spawn details.
+     */
     public HerbPlainsSpawnDefinition() {
         super(PlantType.GRASS, AnotherWorldBiomes.PLAINS.getId(), 0.5f, 0.3f, "Herbalism:Herb",
                 Arrays.asList(

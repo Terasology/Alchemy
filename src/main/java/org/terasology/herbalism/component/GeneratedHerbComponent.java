@@ -17,6 +17,10 @@ package org.terasology.herbalism.component;
 
 import org.terasology.entitySystem.Component;
 
+/**
+ * This component is used for storing the base genome of a generated herb.
+ */
 public final class GeneratedHerbComponent implements Component {
+    /** A string description of this herb's base genome. */
     public String herbBaseGenome;
 }

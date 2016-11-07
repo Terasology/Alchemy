@@ -31,10 +31,16 @@ import org.terasology.world.generator.plugin.RegisterPlugin;
 
 import java.util.Arrays;
 
+/**
+ * This plugin defines the growth of herbs and how they may replace certain blocks.
+ */
 @RegisterPlugin
 public class HerbAGrowthDefinition extends ReplaceBlockGrowthDefinition {
     public static final String ID = "Herbalism:Herb";
 
+    /**
+     * Define the growth definition for the base (generated) herbs.
+     */
     public HerbAGrowthDefinition() {
         super(ID, Arrays.asList(
                         new BlockUri("Alchemy:HerbGrowA"), new BlockUri("Alchemy:HerbGrownA"), new BlockUri("Core:DeadBush")),
@@ -54,18 +60,31 @@ public class HerbAGrowthDefinition extends ReplaceBlockGrowthDefinition {
         );
     }
 
+    /**
+     * Replace this particular herb plant block with the next stage of the herb plant block.
+     *
+     * @param worldProvider     WorldProvider instance to interface with the game world blocks.
+     * @param blockManager      BlockManager instance to get the specific block type.
+     * @param plant             Reference to the herb plant.
+     * @param position          World position of the plant block in Vector3 coordinates.
+     * @param nextStage         Next stage of the herb plant (block) growth.
+     * @param isLast            Whether this is the last stage of herb plant growth.
+     */
     @Override
     protected void replaceBlock(WorldProvider worldProvider, BlockManager blockManager, EntityRef plant, Vector3i position, BlockUri nextStage, boolean isLast) {
+        // If this is not the last stage of herb plant growth, continue as normal. Otherwise, just call the parent method.
         if (!isLast) {
-            // We need to copy the genome between stages
+            // We need to copy the genome between growth stages. Otherwise it will be lost upon replacing this block.
             final GenomeComponent genome = plant.getComponent(GenomeComponent.class);
 
             GenomeComponent genomeCopy = new GenomeComponent();
             genomeCopy.genomeId = genome.genomeId;
             genomeCopy.genes = genome.genes;
 
+            // After copying, call the parent replace block as normal.
             super.replaceBlock(worldProvider, blockManager, plant, position, nextStage, isLast);
 
+            // Get the herb plant block at this location, and add the copied genome onto it.
             final EntityRef blockEntity = CoreRegistry.get(BlockEntityRegistry.class).getEntityAt(position);
             blockEntity.addComponent(genomeCopy);
         } else {

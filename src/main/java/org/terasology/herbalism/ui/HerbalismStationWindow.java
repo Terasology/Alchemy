@@ -41,8 +41,12 @@ import org.terasology.workstation.component.WorkstationProcessingComponent;
 
 import java.util.List;
 
+/**
+ * This interaction screen defines how the HerbalismStation will look and be interacted with.
+ */
 public class HerbalismStationWindow extends BaseInteractionScreen {
 
+    // The following will store references to the various UI window widgets.
     private InventoryGrid fluidContainerInput;
     private InventoryGrid fluidContainerOutput;
     private FluidHolderWidget fluidContainer;

@@ -53,7 +53,7 @@ import org.terasology.world.block.Block;
 import org.terasology.world.block.BlockManager;
 
 /**
- * @author Marcin Sciesinski <marcins78@gmail.com>
+ * Common system for Herbalism that handles the registration of herb effects and genome properties.
  */
 @RegisterSystem
 public class HerbalismCommonSystem extends BaseComponentSystem {
@@ -72,8 +72,12 @@ public class HerbalismCommonSystem extends BaseComponentSystem {
     @In
     private Context context;
 
+    /**
+     * Before beginning execution of this component system, register the herb effects and the genome definition for the herbs.
+     */
     @Override
     public void preBegin() {
+        // Registering all of the default herb effects into the registry.
         herbEffectRegistry.registerHerbEffect(1f, new DoNothingEffect());
         herbEffectRegistry.registerHerbEffect(1f, new HealEffect());
         herbEffectRegistry.registerHerbEffect(1f, new AlterationEffectWrapperHerbEffect(new WalkSpeedAlterationEffect(context), 1f, 1f));
@@ -85,14 +89,17 @@ public class HerbalismCommonSystem extends BaseComponentSystem {
         herbEffectRegistry.registerHerbEffect(1f, new AlterationEffectWrapperHerbEffect(new DamageOverTimeAlterationEffect(context), 1f, 1f));
         herbEffectRegistry.registerHerbEffect(1f, new AlterationEffectWrapperHerbEffect(new CureAllDamageOverTimeAlterationEffect(context), 1f, 1f));
 
+        // Defining a herb name provider.
         final HerbNameProvider herbNameProvider = new HerbNameProvider(worldProvider.getSeed().hashCode());
 
         int genomeLength = 10;
 
+        // Creating the gene mutator and the breeding algorithm.
         GeneMutator herbGeneMutator = new HerbGeneMutator();
-
         BreedingAlgorithm herbBreedingAlgorithm = new MonoploidBreedingAlgorithm(9, 0.005f, herbGeneMutator);
 
+        // Creating the seed based genome map for the herbs, and adding all of the seed-based properties based on the
+        // constants in the Herbalism class. Most are self-explanatory of what they do.
         SeedBasedGenomeMap herbGenomeMap = new SeedBasedGenomeMap(worldProvider.getSeed().hashCode());
         herbGenomeMap.addSeedBasedProperty(Herbalism.EFFECT_PROPERTY, 1, genomeLength, 3, HerbEffect.class,
                 new Function<String, HerbEffect>() {
@@ -133,6 +140,7 @@ public class HerbalismCommonSystem extends BaseComponentSystem {
                         return herbNameProvider.getName(input);
                     }
                 });
+        // This is for defining the icon of the herb, and how it can vary based on the herb hues.
         herbGenomeMap.addProperty(Herbalism.ICON_PROPERTY, new int[]{0, 1, 2, 3, 4, 5, 6, 7, 8, 9}, TextureRegionAsset.class,
                 new Function<String, TextureRegionAsset>() {
                     @Override
@@ -161,8 +169,10 @@ public class HerbalismCommonSystem extends BaseComponentSystem {
                     }
                 });
 
+        // Based on the above generated breeding algorithm and genome map, use the two to define the herb genome.
         GenomeDefinition herbGenomeDefinition = new GenomeDefinition(herbBreedingAlgorithm, herbGenomeMap);
 
+        // Register the genome definition for any generated herb. This is not applicable to predefined herbs.
         genomeRegistry.registerType("Alchemy:Herb", herbGenomeDefinition);
     }
 }

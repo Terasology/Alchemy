@@ -25,10 +25,13 @@ import org.terasology.world.generator.plugin.RegisterPlugin;
 import java.util.Arrays;
 
 /**
- * @author Marcin Sciesinski <marcins78@gmail.com>
+ * This plugin defines how herbs should spawn in tundra biomes.
  */
 @RegisterPlugin
 public class HerbTundraSpawnDefinition extends StaticBlockFloraSpawnDefinition {
+    /**
+     * Define the tundra biome herb spawn details.
+     */
     public HerbTundraSpawnDefinition() {
         super(PlantType.GRASS, AnotherWorldBiomes.TUNDRA.getId(), 0.5f, 0.3f, "Herbalism:Herb",
                 Arrays.asList(

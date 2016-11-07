@@ -41,19 +41,18 @@ import org.terasology.utilities.Assets;
 import java.util.Arrays;
 import java.util.List;
 
-// A custom workstation recipe format for herbalism related recipes. Note that this is only intended to be used with the HerbalismCraftingStations.
-// Potions specifically.
+/**
+ * A custom workstation recipe format for herbalism related recipes. Note that this is only intended to be used with the HerbalismCraftingStations.
+ * Potions specifically.
+ */
 public class HerbalismCraftingStationRecipe extends AbstractWorkstationRecipe {
-    // Creates the Herbalism Crafting Station's recipe based on the assigned CraftingStationRecipeComponent (i.e. the recipe parameters).
+    /**
+     * Create the Herbalism Crafting Station's recipe based on the assigned CraftingStationRecipeComponent (i.e. the recipe parameters).
+     *
+     * @param recipe    The titular recipe applicable to this HerbalismStation.
+     */
     public HerbalismCraftingStationRecipe(CraftingStationRecipeComponent recipe) {
-        // Check to see if the first item in this recipe is a potion container.
-        // TODO: Make it so that it doesn't matter where in the recipe the potion bottle is.
-        String oldPotionContainerName = "";// = recipe.recipeComponents.get(0).split("\\*")[1];
-        /*Prefab potionTest = Assets.getPrefab(oldPotionContainerName).get();
-        if (!potionTest.hasComponent(EmptyPotionComponent.class)) {
-            oldPotionContainerName = "";
-        }
-        */
+        String oldPotionContainerName = "";
 
         // Search through the recipe components to find the first empty potion bottle. If it's found, break out of the loop.
         // Otherwise, the oldPotionContainerName will be an empty string.
@@ -94,40 +93,69 @@ public class HerbalismCraftingStationRecipe extends AbstractWorkstationRecipe {
         }
     }
 
-    // This internal class is used for creating and defining the resultant potion.
+    /**
+     * This internal class is used for creating and defining the resultant potion.
+     */
     private final class PotionRecipeResultFactory extends ItemRecipeResultFactory {
-        private String toolTip;                 // Potion's tooltip
-        private String oldPotionContainerName = "";  // Name of the potion's container to be used.
-        private EntityRef potionBottleRef;      // Reference to the current potion bottle.
+        private String toolTip;                      /** Potion's tooltip. This id displayed by default when mouse hovered over. */
+        private String oldPotionContainerName = "";  /** Name of the potion's container to be used. */
+        private EntityRef potionBottleRef;           /** Reference to the current potion bottle. */
 
-        private DurabilityComponent lastDurability; // Reference to the last potion bottle's durability.
-        private String lastPotionBottleName = "";        // Name of the last potion bottle used.
+        private DurabilityComponent lastDurability;  /** Reference to the last potion bottle's durability. */
+        private String lastPotionBottleName = "";    /** Name of the last potion bottle used. */
 
-        // Set the reference to the current potion bottle.
+        /**
+         * Set the reference to the current potion bottle.
+         *
+         * #param ref   Reference to the potion bottle entity.
+         */
         public void setPotionBottleRef(EntityRef ref) {
             potionBottleRef = ref;
         }
 
-        // Constructor for when the potion doesn't use bottles and the toolTip can be the default one.
+        /**
+         * Constructor for when the potion doesn't use bottles and the toolTip can be the default one.
+         *
+         * @param prefab    Prefab of the potion to be created.
+         * @param count     Number of the potions to be created.
+         */
         private PotionRecipeResultFactory(Prefab prefab, int count) {
             super(prefab, count);
             toolTip = "Herb Potion";
         }
 
-        // Constructor for when the potion doesn't use bottles but the toolTip needs to be replaced.
+        /**
+         * Constructor for when the potion doesn't use bottles but the toolTip needs to be replaced.
+         *
+         * @param prefab    Prefab of the potion to be created.
+         * @param toolTip   Potion's tooltip to be displayed.
+         * @param count     Number of the potions to be created.
+         */
         private PotionRecipeResultFactory(Prefab prefab, String toolTip, int count) {
             super(prefab, count);
             this.toolTip = toolTip;
         }
 
-        // Constructor for when the potion uses bottles.
+        /**
+         * Constructor for when the potion uses bottles.
+         *
+         * @param prefab            Prefab of the potion to be created.
+         * @param toolTip           Potion's tooltip to be displayed.
+         * @param count             Number of the potions to be created.
+         * @param oldContainerName  Name of the empty potion container.
+         */
         private PotionRecipeResultFactory(Prefab prefab, String toolTip, int count, String oldContainerName) {
             super(prefab, count);
             this.toolTip = toolTip;
             oldPotionContainerName = oldContainerName;
         }
 
-        // Setup the display of the resultant item. This includes the icon and description text.
+        /**
+         * Setup the display of the resultant item. This includes the icon and description text.
+         *
+         * @param parameters    List of parameters of this particular recipe component.
+         * @param itemIcon      Graphical icon of this item.
+         */
         @Override
         public void setupDisplay(List<String> parameters, ItemIcon itemIcon) {
             super.setupDisplay(parameters, itemIcon);
@@ -143,7 +171,13 @@ public class HerbalismCraftingStationRecipe extends AbstractWorkstationRecipe {
                     Arrays.asList(new TooltipLine(toolTip), HerbalismClientSystem.getHerbTooltipLine(herbName)));
         }
 
-        // Create the resultant potion (item) here.
+        /**
+         * Create the resultant potion(s)(item) using the given recipe components.
+         *
+         * @param parameters    All of the recipe components necessary for brewing this potion.
+         * @param multiplier    The number of potions that are created by this recipe.
+         * @return              A reference to the resultant potion item.
+         */
         @Override
         public EntityRef createResult(List<String> parameters, int multiplier) {
             // Extract the herb parameters.
@@ -212,19 +246,34 @@ public class HerbalismCraftingStationRecipe extends AbstractWorkstationRecipe {
         }
     }
 
-    // This internal class is used to define the custom consumption behavior of potion bottles during crafting.
+    /**
+     * This internal class is used to define the custom consumption behavior of potion bottles during crafting.
+     */
     private final class ConsumePotionContainerBehaviour extends ConsumeItemCraftBehaviour {
-        // Reference to the potion crafting result factory.
+        /** Reference to the potion crafting result factory. */
         private PotionRecipeResultFactory potionRecipeResultFactory;
 
-        // Constructor.
+        /**
+         * Constructor which creates the baseline for this item consumption behavior.
+         *
+         * @param matcher                       Predicate matcher for filtering out items that are not empty potion containers.
+         * @param count                         Number of potion containers to consume while crafting.
+         * @param resolver                      To manage the inventory changes during this behavior.
+         * @param potionRecipeResultFactory     Reference to the associated potion result factory.
+         */
         private ConsumePotionContainerBehaviour(Predicate<EntityRef> matcher, int count, InventorySlotResolver resolver, PotionRecipeResultFactory potionRecipeResultFactory) {
             super(matcher, count, resolver);
             this.potionRecipeResultFactory = potionRecipeResultFactory;
         }
 
-        // Get the ingredient parameters and where they are located in the workstation's inventory, and return them as a String.
-        // If the current item being checked is an empty potion bottle, give the result factory class that information.
+        /**
+         * Get the ingredient parameters and where they are located in the workstation's inventory, and return them as a String.
+         * If the current item being checked is an empty potion bottle, give the result factory class that information.
+         *
+         * @param slots     List of workstation inventory slots that the item is present in.
+         * @param item      Reference to the recipe component item in question.
+         * @return          The ingredient parameters of this item in a combined String.
+         */
         @Override
         protected String getParameter(List<Integer> slots, EntityRef item) {
             if (item.hasComponent(EmptyPotionComponent.class)) {
@@ -234,14 +283,29 @@ public class HerbalismCraftingStationRecipe extends AbstractWorkstationRecipe {
         }
     }
 
-    // This internal class is used to define the custom consumption behavior of herbs during crafting.
+    /**
+     * This internal class is used to define the custom consumption behavior of herbs during crafting.
+     */
     private final class ConsumeHerbIngredientBehaviour extends ConsumeItemCraftBehaviour {
+        /**
+         * Constructor which creates the baseline for this item consumption behavior.
+         *
+         * @param matcher   Predicate matcher for filtering out items that are not herbs.
+         * @param count     Number of herbs of this type to consume while crafting.
+         * @param resolver  To manage the inventory changes during this behavior.
+         */
         private ConsumeHerbIngredientBehaviour(Predicate<EntityRef> matcher, int count, InventorySlotResolver resolver) {
             super(matcher, count, resolver);
         }
 
-        // Get the ingredient parameters and where they are located in the workstation's inventory, and return them as a String.
-        // If possible, add the genome parameters of the herbs to the parameter String.
+        /**
+         * Get the ingredient parameters and where they are located in the workstation's inventory, and return them as a String.
+         * If possible, add the genome parameters of the herbs to the parameter String.
+         *
+         * @param slots     List of workstation inventory slots that the item is present in.
+         * @param item      Reference to the herb item in question.
+         * @return          The ingredient parameters of this item plus the genome information in a combined String.
+         */
         @Override
         protected String getParameter(List<Integer> slots, EntityRef item) {
             final GenomeComponent genome = item.getComponent(GenomeComponent.class);
@@ -249,7 +313,12 @@ public class HerbalismCraftingStationRecipe extends AbstractWorkstationRecipe {
             return super.getParameter(slots, item) + "|" + genome.genomeId + "|" + genome.genes + "|" + herbName;
         }
 
-        // Return an integer list of workstation inventory slots this herb is present in.
+        /**
+         * Return an integer list of workstation inventory slots this herb is present in.
+         *
+         * @param parameter     Name of the item being searched for.
+         * @return              What inventory slots this item (likely a herb) is present in.
+         */
         @Override
         protected List<Integer> getSlots(String parameter) {
             return super.getSlots(parameter.substring(0, parameter.indexOf('|')));

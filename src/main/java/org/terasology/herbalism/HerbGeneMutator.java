@@ -19,9 +19,12 @@ import com.google.common.base.Predicate;
 import org.terasology.genome.breed.mutator.VocabularyGeneMutator;
 
 /**
- * @author Marcin Sciesinski <marcins78@gmail.com>
+ * A genome mutator for herbs.
  */
 public class HerbGeneMutator extends VocabularyGeneMutator {
+    /**
+     * Create the gene mutator.
+     */
     public HerbGeneMutator() {
         super("ABCD",
                 new Predicate<Integer>() {

@@ -1,0 +1,31 @@
+{
+    "ProcessDefinition": {
+        "processType": "WorkstationCrafting:NoviceWoodcraftingProcess"
+    },
+    "CraftingStationRecipe": {
+        "recipeId": "Storage|Alchemy:GlassBottle",
+
+        "recipeComponents": ["4*WorkstationCrafting:glass"],
+        "recipeTools": ["1*hammer"],
+
+        "itemResult": "1*Potions:ToughGlassBottle"
+    },
+    "ProcessingTime": {
+        "duration": 2000
+    },
+    "RequirementInput": {
+        "requirements": [
+            "Hammer"
+        ]
+    },
+    "InventoryInput": {
+        "itemCounts": {
+            "WorkstationCrafting:glass": 4
+        }
+    },
+    "InventoryOutput": {
+        "itemCounts": {
+            "Potions:ToughGlassBottle": 1
+        }
+    }
+}

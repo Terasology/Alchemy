@@ -15,6 +15,9 @@
  */
 package org.terasology.herbalism;
 
+/**
+ * Defining a set of String constants for herb details.
+ */
 public final class Herbalism {
     public static final String EFFECT_PROPERTY = "effect";
     public static final String DURATION_PROPERTY = "duration";

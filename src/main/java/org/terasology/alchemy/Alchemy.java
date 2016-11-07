@@ -15,8 +15,10 @@
  */
 package org.terasology.alchemy;
 
+/**
+ * A class only used for storing the alchemy process type constants.
+ */
 public final class Alchemy {
-    //public static final String HERBALISM_PROCESS_TYPE = "Alchemy:Herbalism";
     public static final String HERBALISM_PROCESS_TYPE = "Alchemy:HerbalismProcess";
 
     private Alchemy() {

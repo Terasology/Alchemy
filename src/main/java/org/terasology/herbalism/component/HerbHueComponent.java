@@ -19,6 +19,9 @@ import org.terasology.entitySystem.Component;
 
 import java.util.List;
 
+/**
+ * This component is used for storing the hue ranges of a particular herb.
+ */
 public class HerbHueComponent implements Component {
     public List<String> hueRanges;
 }

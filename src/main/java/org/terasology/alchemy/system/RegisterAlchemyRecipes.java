@@ -42,7 +42,9 @@ import org.terasology.workstation.system.WorkstationRegistry;
 import org.terasology.world.block.BlockManager;
 import org.terasology.world.block.BlockUri;
 
-// This system registers all of the Alchemy recipes in this module.
+/**
+ * This system registers all of the Alchemy recipes in this module.
+ */
 @RegisterSystem
 public class RegisterAlchemyRecipes extends BaseComponentSystem {
     @In
@@ -58,7 +60,9 @@ public class RegisterAlchemyRecipes extends BaseComponentSystem {
     @In
     private EntityManager entityManager;
 
-    // Initialization phase.
+    /**
+     * Initialization phase where all of the recipes are added.
+     */
     @Override
     public void initialise() {
         // Register the process factory for generic Herbalism process recipes that don't use the Herbalism Station.
@@ -69,7 +73,9 @@ public class RegisterAlchemyRecipes extends BaseComponentSystem {
         addHerbalismWorkstationRecipes();
     }
 
-    // Add the recipe for building the Herbalism Station.
+    /**
+     * Add the recipe for building the Herbalism Station.
+     */
     private void addWorkstationFormingRecipes() {
         LayeredMultiBlockFormItemRecipe herbalismStationRecipe = new LayeredMultiBlockFormItemRecipe(
                 new ToolTypeEntityFilter("mortarAndPestle"), new Basic2DSizeFilter(3, 1), new AnyActivityFilter(),
@@ -79,7 +85,9 @@ public class RegisterAlchemyRecipes extends BaseComponentSystem {
         multiBlockFormRecipeRegistry.addMultiBlockFormItemRecipe(herbalismStationRecipe);
     }
 
-    // Add all of the recipes to the HerbalismStation.
+    /**
+     * Add all of the potion recipes to the HerbalismStation.
+     */
     private void addHerbalismWorkstationRecipes() {
         // TODO: Temporarily removed for sake of testing.
         /* workstationRegistry.registerProcess(WorkstationCrafting.HERBALISM_PROCESS_TYPE,
@@ -98,14 +106,27 @@ public class RegisterAlchemyRecipes extends BaseComponentSystem {
         }
     }
 
-    // This internal predicate class is used to filter out incompatiable crafting station types.
+    /**
+     * This internal predicate class is used to filter out incompatible crafting station types.
+     */
     private final class StationTypeFilter implements Predicate<EntityRef> {
+        /** Name of the station type. */
         private String stationType;
 
+        /**
+         * Define what station this filter should look for.
+         *
+         * @param stationType   Name of the station being filtered.
+         */
         private StationTypeFilter(String stationType) {
             this.stationType = stationType;
         }
 
+        /**
+         * Apply an entity to this filter to see if it has the same station type.
+         * @param entity    Reference to the entity being checked.
+         * @return          True if the entity has the same station type. False if not.
+         */
         @Override
         public boolean apply(EntityRef entity) {
             CraftingStationMaterialComponent stationMaterial = entity.getComponent(CraftingStationMaterialComponent.class);

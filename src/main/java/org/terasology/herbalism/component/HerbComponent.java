@@ -17,5 +17,8 @@ package org.terasology.herbalism.component;
 
 import org.terasology.entitySystem.Component;
 
+/**
+ * Add this component to an item to indicate that it is a herb.
+ */
 public class HerbComponent implements Component {
 }

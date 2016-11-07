@@ -29,7 +29,9 @@ import org.terasology.rendering.nui.NUIManager;
 import org.terasology.workstation.component.WorkstationInventoryComponent;
 import org.terasology.workstationCrafting.event.CraftingStationUpgraded;
 
-// This class is designed for handling certain events related to the HerbalismStation ui.
+/**
+ * This class is designed for handling certain events related to the HerbalismStation UI.
+ */
 @RegisterSystem
 public class HerbalismStationWindowSystem extends BaseComponentSystem {
     @In
