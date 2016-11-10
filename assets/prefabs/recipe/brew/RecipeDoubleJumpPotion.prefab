@@ -5,7 +5,7 @@
     "CraftingStationRecipe": {
         "recipeId": "Potions:DoubleJumpPotion",
 
-        "recipeComponents": ["1*Alchemy:WalkSpeedHerb", "1*Alchemy:SwimSpeedHerb"],
+        "recipeComponents": ["1*Potions:glassBottle", "1*Alchemy:WalkSpeedHerb", "1*Alchemy:SwimSpeedHerb"],
         "recipeFluids": ["0.5*Fluid:Water"],
         "requiredTemperature": 150,
         "processingDuration": 3250,
@@ -20,6 +20,7 @@
     },
     "InventoryInput": {
         "itemCounts": {
+            "Potions:GlassBottle": 1,
             "Alchemy:WalkSpeedHerb": 1,
             "Alchemy:SwimSpeedHerb": 1
         }

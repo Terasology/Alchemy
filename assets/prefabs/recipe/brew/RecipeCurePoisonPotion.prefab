@@ -5,7 +5,7 @@
     "CraftingStationRecipe": {
         "recipeId": "Potions:CurePoisonPotion",
 
-        "recipeComponents": ["2*Alchemy:AntiPoisonHerb"],
+        "recipeComponents": ["1*Potions:glassBottle", "2*Alchemy:AntiPoisonHerb"],
         "recipeFluids": ["1*Fluid:Water"],
         "requiredTemperature": 150,
         "processingDuration": 3000,
@@ -20,6 +20,7 @@
     },
     "InventoryInput": {
         "itemCounts": {
+            "Potions:GlassBottle": 1,
             "Alchemy:AntiPoisonHerb": 2
         }
     },

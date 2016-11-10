@@ -24,7 +24,7 @@ import org.terasology.potions.system.PotionsCategory;
 import org.terasology.registry.CoreRegistry;
 
 /**
- * This system is used to add the AlchemyCategory help category by sending it to the approriate handler system over in
+ * This system is used to add the AlchemyCategory help category by sending it to the appropriate handler system over in
  * the InGameHelp module.
  */
 @RegisterSystem

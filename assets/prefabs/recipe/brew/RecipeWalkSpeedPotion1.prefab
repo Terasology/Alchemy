@@ -5,7 +5,7 @@
     "CraftingStationRecipe": {
         "recipeId": "Potions:WalkSpeedPotion",
 
-        "recipeComponents": ["2*Alchemy:WalkSpeedHerb"],
+        "recipeComponents": ["1*Potions:glassBottle", "2*Alchemy:WalkSpeedHerb"],
         "recipeFluids": ["0.5*Fluid:Water"],
         "requiredTemperature": 150,
         "processingDuration": 3000,
@@ -20,6 +20,7 @@
     },
     "InventoryInput": {
         "itemCounts": {
+            "Potions:GlassBottle": 1,
             "Alchemy:WalkSpeedHerb": 2
         }
     },
