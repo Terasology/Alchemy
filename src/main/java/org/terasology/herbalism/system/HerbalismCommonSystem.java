@@ -41,7 +41,7 @@ import org.terasology.herbalism.HerbNameProvider;
 import org.terasology.herbalism.Herbalism;
 import org.terasology.herbalism.component.HerbHueComponent;
 import org.terasology.potions.HerbEffect;
-import org.terasology.potions.effect.AlterationEffectWrapperHerbEffect;
+import org.terasology.potions.effect.AlterationToHerbEffectWrapper;
 import org.terasology.potions.effect.DoNothingEffect;
 import org.terasology.potions.effect.HealEffect;
 import org.terasology.registry.In;
@@ -80,14 +80,14 @@ public class HerbalismCommonSystem extends BaseComponentSystem {
         // Registering all of the default herb effects into the registry.
         herbEffectRegistry.registerHerbEffect(1f, new DoNothingEffect());
         herbEffectRegistry.registerHerbEffect(1f, new HealEffect());
-        herbEffectRegistry.registerHerbEffect(1f, new AlterationEffectWrapperHerbEffect(new WalkSpeedAlterationEffect(context), 1f, 1f));
-        herbEffectRegistry.registerHerbEffect(1f, new AlterationEffectWrapperHerbEffect(new SwimSpeedAlterationEffect(context), 1f, 1f));
-        herbEffectRegistry.registerHerbEffect(1f, new AlterationEffectWrapperHerbEffect(new RegenerationAlterationEffect(context), 1f, 100f));
-        herbEffectRegistry.registerHerbEffect(1f, new AlterationEffectWrapperHerbEffect(new WaterBreathingAlterationEffect(context), 1f, 1f));
-        herbEffectRegistry.registerHerbEffect(1f, new AlterationEffectWrapperHerbEffect(new JumpSpeedAlterationEffect(context), 1f, 1f));
-        herbEffectRegistry.registerHerbEffect(1f, new AlterationEffectWrapperHerbEffect(new MultiJumpAlterationEffect(context), 1f, 1f));
-        herbEffectRegistry.registerHerbEffect(1f, new AlterationEffectWrapperHerbEffect(new DamageOverTimeAlterationEffect(context), 1f, 1f));
-        herbEffectRegistry.registerHerbEffect(1f, new AlterationEffectWrapperHerbEffect(new CureAllDamageOverTimeAlterationEffect(context), 1f, 1f));
+        herbEffectRegistry.registerHerbEffect(1f, new AlterationToHerbEffectWrapper(new WalkSpeedAlterationEffect(context), 1f, 1f));
+        herbEffectRegistry.registerHerbEffect(1f, new AlterationToHerbEffectWrapper(new SwimSpeedAlterationEffect(context), 1f, 1f));
+        herbEffectRegistry.registerHerbEffect(1f, new AlterationToHerbEffectWrapper(new RegenerationAlterationEffect(context), 1f, 100f));
+        herbEffectRegistry.registerHerbEffect(1f, new AlterationToHerbEffectWrapper(new WaterBreathingAlterationEffect(context), 1f, 1f));
+        herbEffectRegistry.registerHerbEffect(1f, new AlterationToHerbEffectWrapper(new JumpSpeedAlterationEffect(context), 1f, 1f));
+        herbEffectRegistry.registerHerbEffect(1f, new AlterationToHerbEffectWrapper(new MultiJumpAlterationEffect(context), 1f, 1f));
+        herbEffectRegistry.registerHerbEffect(1f, new AlterationToHerbEffectWrapper(new DamageOverTimeAlterationEffect(context), 1f, 1f));
+        herbEffectRegistry.registerHerbEffect(1f, new AlterationToHerbEffectWrapper(new CureAllDamageOverTimeAlterationEffect(context), 1f, 1f));
 
         // Defining a herb name provider.
         final HerbNameProvider herbNameProvider = new HerbNameProvider(worldProvider.getSeed().hashCode());
