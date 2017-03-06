@@ -1,0 +1,27 @@
+{
+    "parent": "engine:iconItem",
+    "Item": {
+        "icon": "Alchemy:RageHerb",
+        "stackId": "Alchemy:rageHerb"
+    },
+    "DisplayName": {
+        "name": "Rage Herb"
+    },
+    "Herb": { },
+    "PredefinedHerb": {
+        "herbBaseGenome": "Alchemy:RageHerb"
+    },
+    "Genome": {
+        "genomeId": "ABCDEFGHIJ",
+        "genes": "12350"
+    },
+    "CraftingStationIngredient": {
+        "type": "Alchemy:rageHerb"
+    },
+    "ItemHelp": {
+        "category": "Alchemy",
+        "paragraphText": [
+            "A herb that contains some enragement properties."
+        ]
+    }
+}

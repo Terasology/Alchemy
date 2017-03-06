@@ -15,7 +15,7 @@
             },
             {
                 "id" : "AlterationEffects",
-                "minVersion" : "0.2.0"
+                "minVersion" : "1.0.0"
             },
             {
                 "id" : "Durability",

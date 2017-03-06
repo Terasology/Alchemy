@@ -1,6 +1,6 @@
 {
     "BlockDropGrammar": {
-        "itemDrops": ["6*WorkstationCrafting:Brick"]
+        "itemDrops": ["6*Stonecrafting:Brick"]
     },
     "InteractionTarget": {},
     "InteractionScreen": {

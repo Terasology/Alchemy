@@ -2,5 +2,13 @@
     "basedOn" : "core:plant",
     "entity": {
         "prefab": "Alchemy:WalkSpeedHerbBlock"
-    }
+    },
+    "tiles": {
+      "top": "Alchemy:WalkSpeedHerb",
+      "sides": "Alchemy:WalkSpeedHerb",
+      "bottom": "Alchemy:WalkSpeedHerb"
+    },
+    "title" : "Walk Speed Herb Plant",
+    "displayName": "Walk Speed Herb",
+    "waving": true
 }

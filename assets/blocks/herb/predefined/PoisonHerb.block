@@ -2,5 +2,13 @@
     "basedOn" : "core:plant",
     "entity": {
         "prefab": "Alchemy:PoisonHerbBlock"
-    }
+    },
+    "tiles": {
+      "top": "Alchemy:PoisonHerb",
+      "sides": "Alchemy:PoisonHerb",
+      "bottom": "Alchemy:PoisonHerb"
+    },
+    "title" : "Poison Herb Plant",
+    "displayName": "Poison Herb",
+    "waving": true
 }

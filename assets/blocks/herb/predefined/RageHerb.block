@@ -1,0 +1,14 @@
+{
+    "basedOn" : "core:plant",
+    "entity": {
+        "prefab": "Alchemy:RageHerbBlock"
+    },
+    "tiles": {
+      "top": "Alchemy:RageHerb",
+      "sides": "Alchemy:RageHerb",
+      "bottom": "Alchemy:RageHerb"
+    },
+    "title" : "Rage Herb Plant",
+    "displayName": "Rage Herb",
+    "waving": true
+}

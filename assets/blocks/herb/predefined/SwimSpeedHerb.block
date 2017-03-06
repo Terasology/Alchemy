@@ -2,5 +2,13 @@
     "basedOn" : "core:plant",
     "entity": {
         "prefab": "Alchemy:SwimSpeedHerbBlock"
-    }
+    },
+    "tiles": {
+      "top": "Alchemy:SwimSpeedHerb",
+      "sides": "Alchemy:SwimSpeedHerb",
+      "bottom": "Alchemy:SwimSpeedHerb"
+    },
+    "title" : "Swim Speed Herb Plant",
+    "displayName": "Swim Speed Herb",
+    "waving": true
 }

@@ -25,28 +25,23 @@ import org.terasology.world.generator.plugin.RegisterPlugin;
 import java.util.Arrays;
 
 /**
- * This plugin defines how herbs should spawn in plains biomes.
+ * This plugin defines how herbs should spawn in desert biomes.
  */
 @RegisterPlugin
-public class HerbPlainsSpawnDefinition extends StaticBlockFloraSpawnDefinition {
+public class HerbDesertSpawnDefinition extends StaticBlockFloraSpawnDefinition {
     /**
-     * Define the plains biome herb spawn details.
+     * Define the desert biome herb spawn details.
      */
-    public HerbPlainsSpawnDefinition() {
-        super(PlantType.GRASS, AnotherWorldBiomes.PLAINS.getId(), 0.5f, 0.3f, "Herbalism:Herb",
+    public HerbDesertSpawnDefinition() {
+        super(PlantType.GRASS, AnotherWorldBiomes.DESERT.getId(), 0.5f, 0.1f, "Herbalism:Herb",
                 Arrays.asList(
                         new BlockUri("Alchemy:AntiPoisonHerb"),
-                        new BlockUri("Alchemy:HealingHerb"),
                         new BlockUri("Alchemy:PoisonHerb"),
-                        new BlockUri("Alchemy:RegenHerb"),
-                        new BlockUri("Alchemy:WalkSpeedHerb"),
-                        new BlockUri("Alchemy:JumpSpeedHerb"),
-                        new BlockUri("Alchemy:SwimSpeedHerb"),
                         new BlockUri("Alchemy:RageHerb"),
                         new BlockUri("Alchemy:HerbGeneratedA")/*,
                         new BlockUri("WorkstationCrafting:Herb2"),
                         new BlockUri("WorkstationCrafting:Herb6"),
                         new BlockUri("WorkstationCrafting:Herb7")*/),
-                new BlockCollectionPredicate(Blocks.getBlock("Core:Grass")), null);
+                new BlockCollectionPredicate(Blocks.getBlock("Core:Sand")), null);
     }
 }

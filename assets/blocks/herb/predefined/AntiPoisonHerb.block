@@ -3,5 +3,12 @@
     "entity": {
         "prefab": "Alchemy:AntiPoisonHerbBlock"
     },
-    "tile": "Alchemy:AntiPoisonHerb"
+    "tiles": {
+      "top": "Alchemy:AntiPoisonHerb",
+      "sides": "Alchemy:AntiPoisonHerb",
+      "bottom": "Alchemy:AntiPoisonHerb"
+    },
+    "title" : "Anti Poison Herb Plant",
+    "displayName": "Anti Poison Herb",
+    "waving": true
 }

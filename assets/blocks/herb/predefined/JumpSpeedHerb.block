@@ -1,0 +1,14 @@
+{
+    "basedOn" : "core:plant",
+    "entity": {
+        "prefab": "Alchemy:JumpSpeedHerbBlock"
+    },
+    "tiles": {
+      "top": "Alchemy:JumpSpeedHerb",
+      "sides": "Alchemy:JumpSpeedHerb",
+      "bottom": "Alchemy:JumpSpeedHerb"
+    },
+    "title" : "Jump Speed Herb Plant",
+    "displayName": "Jump Speed Herb",
+    "waving": true
+}

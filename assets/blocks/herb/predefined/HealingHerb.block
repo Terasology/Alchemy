@@ -2,5 +2,13 @@
     "basedOn" : "core:plant",
     "entity": {
         "prefab": "Alchemy:HealingHerbBlock"
-    }
+    },
+    "tiles": {
+      "top": "Alchemy:HealingHerb",
+      "sides": "Alchemy:HealingHerb",
+      "bottom": "Alchemy:HealingHerb"
+    },
+    "title" : "Healing Herb Plant",
+    "displayName": "Healing Herb",
+    "waving": true
 }

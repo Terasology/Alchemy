@@ -2,5 +2,13 @@
     "basedOn" : "core:plant",
     "entity": {
         "prefab": "Alchemy:RegenHerbBlock"
-    }
+    },
+    "tiles": {
+      "top": "Alchemy:RegenHerb",
+      "sides": "Alchemy:RegenHerb",
+      "bottom": "Alchemy:RegenHerb"
+    },
+    "title" : "Regen Herb Plant",
+    "displayName": "Regen Herb",
+    "waving": true
 }
