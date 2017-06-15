@@ -5,58 +5,54 @@
     "displayName" : "Alchemy",
     "description" : "A module that allows the brewing of potions, elixirs, tonics, and other vials.",
     "dependencies" : [
-            {
-                "id" : "AnotherWorld",
-                "minVersion" : "0.2.0"
-            },
-            {
-                "id" : "AnotherWorldPlants",
-                "minVersion" : "0.1.0"
-            },
-            {
-                "id" : "AlterationEffects",
-                "minVersion" : "1.0.0"
-            },
-            {
-                "id" : "Durability",
-                "minVersion": "1.0.0"
-            },
-            {
-                "id" : "WorkstationCrafting",
-                "minVersion" : "1.0.0"
-            },
-            {
-                "id" : "GrowingFlora",
-                "minVersion" : "0.1.0"
-            },
-            {
-                "id" : "Core",
-                "minVersion" : "1.0.0"
-            },
-            {
-                "id" : "Genome",
-                "minVersion" : "0.1.0"
-            },
-            {
-                "id" : "NameGenerator",
-                "minVersion" : "0.4.0"
-            },
-            {
-                "id" : "PlantPack",
-                "minVersion" : "1.0.0"
-            },
-            {
-                "id" : "Potions",
-                "minVersion" : "1.0.0"
-            },
-            {
-                "id" : "InGameHelp",
-                "minVersion": "1.0.0"
-            },
-            {
-                "id" : "WorkstationInGameHelp",
-                "minVersion": "1.0.0"
-            }
+        {
+            "id" : "AnotherWorld",
+            "minVersion" : "0.2.0"
+        },
+        {
+            "id" : "AnotherWorldPlants",
+            "minVersion" : "0.1.0"
+        },
+        {
+            "id" : "AlterationEffects",
+            "minVersion" : "1.0.0"
+        },
+        {
+            "id" : "Durability",
+            "minVersion": "1.0.0"
+        },
+        {
+            "id" : "WorkstationCrafting",
+            "minVersion" : "1.0.0"
+        },
+        {
+            "id" : "GrowingFlora",
+            "minVersion" : "0.1.0"
+        },
+        {
+            "id" : "Core",
+            "minVersion" : "1.0.0"
+        },
+        {
+            "id" : "Genome",
+            "minVersion" : "0.1.0"
+        },
+        {
+            "id" : "NameGenerator",
+            "minVersion" : "0.4.0"
+        },
+        {
+            "id" : "PlantPack",
+            "minVersion" : "1.0.0"
+        },
+        {
+            "id" : "Potions",
+            "minVersion" : "1.0.0"
+        },
+        {
+            "id" : "InGameHelpAPI",
+            "minVersion": "0.1.0"
+        }
     ],
     "serverSideOnly" : false
 }
