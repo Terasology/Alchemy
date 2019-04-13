@@ -22,7 +22,7 @@
         "itemCounts": {
             "Potions:ToughGlassBottle": 1,
             "Potions:RegenPotion": 1,
-            "Alchemy:HealingHerb": 2,
+            "Alchemy:HealingHerb": 2
         }
     },
     "InventoryOutput": {

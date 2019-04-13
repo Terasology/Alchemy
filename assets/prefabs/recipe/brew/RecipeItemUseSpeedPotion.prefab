@@ -1,0 +1,32 @@
+{
+    "ProcessDefinition": {
+        "processType": "Alchemy:HerbalismProcess"
+    },
+    "CraftingStationRecipe": {
+        "recipeId": "Potions:ItemUseSpeedPotion",
+
+        "recipeComponents": ["1*Potions:glassBottle", "1*Alchemy:WalkSpeedHerb"],
+        "recipeFluids": ["0.5*Fluid:Water"],
+        "requiredTemperature": 150,
+        "processingDuration": 3000,
+
+        "itemResult": "1*Potions:ItemUseSpeedPotion"
+    },
+    "HerbalismStationRecipe": {
+        "recipeId": "Potions:ItemUseSpeedPotion"
+    },
+    "ProcessingTime": {
+        "duration": 2000
+    },
+    "InventoryInput": {
+        "itemCounts": {
+            "Potions:GlassBottle": 1,
+            "Alchemy:WalkSpeedHerb": 1
+        }
+    },
+    "InventoryOutput": {
+        "itemCounts": {
+            "Potions:ItemUseSpeedPotion": 1
+        }
+    }
+}
