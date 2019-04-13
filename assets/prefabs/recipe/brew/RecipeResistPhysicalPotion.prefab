@@ -1,0 +1,33 @@
+{
+    "ProcessDefinition": {
+        "processType": "Alchemy:HerbalismProcess"
+    },
+    "CraftingStationRecipe": {
+        "recipeId": "Potions:ResistPhysicalPotion",
+
+        "recipeComponents": ["1*Potions:ToughGlassBottle", "1*Potions:RegenPotion", "2*Alchemy:HealingHerb"],
+        "recipeFluids": ["0.5*Fluid:Water"],
+        "requiredTemperature": 150,
+        "processingDuration": 10000,
+
+        "itemResult": "1*Potions:ResistPhysicalPotion"
+    },
+    "HerbalismStationRecipe": {
+        "recipeId": "Potions:ResistPhysicalPotion"
+    },
+    "ProcessingTime": {
+        "duration": 10000
+    },
+    "InventoryInput": {
+        "itemCounts": {
+            "Potions:ToughGlassBottle": 1,
+            "Potions:RegenPotion": 1,
+            "Alchemy:HealingHerb": 2
+        }
+    },
+    "InventoryOutput": {
+        "itemCounts": {
+            "Potions:ResistPhysicalPotion": 1
+        }
+    }
+}
