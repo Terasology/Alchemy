@@ -49,6 +49,6 @@ public class HerbForestSpawnDefinition extends StaticBlockFloraSpawnDefinition {
                         new BlockUri("WorkstationCrafting:Herb4"),
                         new BlockUri("WorkstationCrafting:Herb5"),
                         new BlockUri("WorkstationCrafting:Herb6")*/),
-                new BlockCollectionPredicate(Blocks.getBlock("Core:Grass")), null);
+                new BlockCollectionPredicate(Blocks.getBlock("CoreBlocks:Grass")), null);
     }
 }
