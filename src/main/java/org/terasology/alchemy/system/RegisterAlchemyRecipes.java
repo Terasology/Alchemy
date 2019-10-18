@@ -19,26 +19,26 @@ import com.google.common.base.Predicate;
 import org.terasology.alchemy.Alchemy;
 import org.terasology.assets.ResourceUrn;
 import org.terasology.entitySystem.entity.EntityManager;
-import org.terasology.entitySystem.systems.RegisterSystem;
-import org.terasology.herbalism.ui.HerbalismCraftingStationRecipe;
 import org.terasology.entitySystem.entity.EntityRef;
 import org.terasology.entitySystem.prefab.Prefab;
 import org.terasology.entitySystem.prefab.PrefabManager;
 import org.terasology.entitySystem.systems.BaseComponentSystem;
+import org.terasology.entitySystem.systems.RegisterSystem;
+import org.terasology.herbalism.component.HerbalismStationRecipeComponent;
+import org.terasology.herbalism.ui.HerbalismCraftingStationRecipe;
 import org.terasology.multiBlock.Basic2DSizeFilter;
 import org.terasology.multiBlock.BlockUriEntityFilter;
+import org.terasology.multiBlock.MultiBlockFormRecipeRegistry;
 import org.terasology.multiBlock.recipe.LayeredMultiBlockFormItemRecipe;
 import org.terasology.processing.system.AnyActivityFilter;
 import org.terasology.processing.system.ToolTypeEntityFilter;
+import org.terasology.registry.In;
+import org.terasology.workstation.system.WorkstationRegistry;
 import org.terasology.workstationCrafting.component.CraftingStationMaterialComponent;
 import org.terasology.workstationCrafting.component.CraftingStationRecipeComponent;
 import org.terasology.workstationCrafting.system.CraftInHandRecipeRegistry;
 import org.terasology.workstationCrafting.system.CraftingWorkstationProcess;
 import org.terasology.workstationCrafting.system.CraftingWorkstationProcessFactory;
-import org.terasology.herbalism.component.HerbalismStationRecipeComponent;
-import org.terasology.multiBlock.MultiBlockFormRecipeRegistry;
-import org.terasology.registry.In;
-import org.terasology.workstation.system.WorkstationRegistry;
 import org.terasology.world.block.BlockManager;
 import org.terasology.world.block.BlockUri;
 
@@ -80,8 +80,8 @@ public class RegisterAlchemyRecipes extends BaseComponentSystem {
         LayeredMultiBlockFormItemRecipe herbalismStationRecipe = new LayeredMultiBlockFormItemRecipe(
                 new ToolTypeEntityFilter("mortarAndPestle"), new Basic2DSizeFilter(3, 1), new AnyActivityFilter(),
                 "Alchemy:HerbalismStation", null);
-        herbalismStationRecipe.addLayer(1, 1, new BlockUriEntityFilter(new BlockUri("Core:Brick")));
-        herbalismStationRecipe.addLayer(1, 1, new BlockUriEntityFilter(new BlockUri(new ResourceUrn("Core:CobbleStone"), new ResourceUrn(("Engine:EighthBlock")))));
+        herbalismStationRecipe.addLayer(1, 1, new BlockUriEntityFilter(new BlockUri("CoreBlocks:Brick")));
+        herbalismStationRecipe.addLayer(1, 1, new BlockUriEntityFilter(new BlockUri(new ResourceUrn("CoreBlocks:CobbleStone"), new ResourceUrn(("Engine:EighthBlock")))));
         multiBlockFormRecipeRegistry.addMultiBlockFormItemRecipe(herbalismStationRecipe);
     }
 

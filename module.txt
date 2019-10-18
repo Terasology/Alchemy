@@ -1,6 +1,6 @@
 {
     "id" : "Alchemy",
-    "version" : "1.0.1-SNAPSHOT",
+    "version" : "1.0.2-SNAPSHOT",
     "author" : "XTariq, Marcin Sciesinski <marcins78@gmail.com>",
     "displayName" : "Alchemy",
     "description" : "A module that allows the brewing of potions, elixirs, tonics, and other vials.",
@@ -12,6 +12,7 @@
         {"id" : "WorkstationCrafting", "minVersion" : "1.0.0"},
         {"id" : "GrowingFlora", "minVersion" : "0.1.0"},
         {"id" : "Core", "minVersion" : "2.0.0"},
+        {"id" : "CoreBlocks", "minVersion" : "1.0.0"},
         {"id" : "Genome", "minVersion" : "0.1.0"},
         {"id" : "NameGenerator", "minVersion" : "0.4.0"},
         {"id" : "PlantPack", "minVersion" : "1.0.0"},
