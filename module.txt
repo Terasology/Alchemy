@@ -11,7 +11,7 @@
         {"id" : "Durability", "minVersion": "1.0.0"},
         {"id" : "WorkstationCrafting", "minVersion" : "1.0.0"},
         {"id" : "GrowingFlora", "minVersion" : "0.1.0"},
-        {"id" : "Core", "minVersion" : "2.0.0"},
+        {"id" : "Core", "minVersion" : "3.0.0"},
         {"id" : "CoreBlocks", "minVersion" : "1.0.0"},
         {"id" : "Genome", "minVersion" : "0.1.0"},
         {"id" : "NameGenerator", "minVersion" : "0.4.0"},
