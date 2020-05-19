@@ -2,5 +2,5 @@
     "LivingPlant": {
         "type": "Alchemy:Herb"
     },
-    "BlockDropGrammar": {}
+    "DropGrammar": {}
 }

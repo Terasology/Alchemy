@@ -80,8 +80,8 @@ public class RegisterAlchemyRecipes extends BaseComponentSystem {
         LayeredMultiBlockFormItemRecipe herbalismStationRecipe = new LayeredMultiBlockFormItemRecipe(
                 new ToolTypeEntityFilter("mortarAndPestle"), new Basic2DSizeFilter(3, 1), new AnyActivityFilter(),
                 "Alchemy:HerbalismStation", null);
-        herbalismStationRecipe.addLayer(1, 1, new BlockUriEntityFilter(new BlockUri("CoreBlocks:Brick")));
-        herbalismStationRecipe.addLayer(1, 1, new BlockUriEntityFilter(new BlockUri(new ResourceUrn("CoreBlocks:CobbleStone"), new ResourceUrn(("Engine:EighthBlock")))));
+        herbalismStationRecipe.addLayer(1, 1, new BlockUriEntityFilter(new BlockUri("CoreAssets:Brick")));
+        herbalismStationRecipe.addLayer(1, 1, new BlockUriEntityFilter(new BlockUri(new ResourceUrn("CoreAssets:CobbleStone"), new ResourceUrn(("Engine:EighthBlock")))));
         multiBlockFormRecipeRegistry.addMultiBlockFormItemRecipe(herbalismStationRecipe);
     }
 
