@@ -33,7 +33,7 @@ public class HerbPlainsSpawnDefinition extends StaticBlockFloraSpawnDefinition {
      * Define the plains biome herb spawn details.
      */
     public HerbPlainsSpawnDefinition() {
-        super(PlantType.GRASS, AnotherWorldBiomes.PLAINS.getId(), 0.5f, 0.3f, "Herbalism:Herb",
+        super(PlantType.GRASS, AnotherWorldBiomes.PLAINS.getId().toLowerCase(), 0.5f, 0.3f, "Herbalism:Herb",
                 Arrays.asList(
                         new BlockUri("Alchemy:AntiPoisonHerb"),
                         new BlockUri("Alchemy:HealingHerb"),
