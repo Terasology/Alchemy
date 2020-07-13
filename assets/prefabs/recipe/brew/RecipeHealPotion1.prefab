@@ -6,7 +6,7 @@
         "recipeId": "Potions:HealPotion",
 
         "recipeComponents": ["1*Potions:glassBottle", "2*Alchemy:HealingHerb"],
-        "recipeFluids": ["0.5*Fluid:Water"],
+        "recipeFluids": ["0.5*CoreAssets:Water"],
         "requiredTemperature": 150,
         "processingDuration": 2500,
 

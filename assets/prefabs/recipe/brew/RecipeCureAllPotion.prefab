@@ -6,7 +6,7 @@
         "recipeId": "Potions:CureAllPotion",
 
         "recipeComponents": ["1*Potions:glassBottle", "5*Alchemy:AntiPoisonHerb"],
-        "recipeFluids": ["4*Fluid:Water"],
+        "recipeFluids": ["4*CoreAssets:Water"],
         "requiredTemperature": 175,
         "processingDuration": 8000,
 
