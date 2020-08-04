@@ -6,7 +6,7 @@
         "recipeId": "Potions:ResistPoisonPotion",
 
         "recipeComponents": ["1*Potions:ToughGlassBottle", "1*Potions:RegenPotion", "2*Alchemy:PoisonHerb"],
-        "recipeFluids": ["0.5*Fluid:Water"],
+        "recipeFluids": ["0.5*CoreAssets:Water"],
         "requiredTemperature": 150,
         "processingDuration": 10000,
 

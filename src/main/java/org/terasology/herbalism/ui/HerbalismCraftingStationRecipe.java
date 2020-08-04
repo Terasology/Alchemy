@@ -68,7 +68,7 @@ public class HerbalismCraftingStationRecipe extends AbstractWorkstationRecipe {
         }
 
         // Add the fluid behavior and required heat and duration based on the recipe's parameters.
-        addFluidBehaviour(new ConsumeFluidBehaviour("Fluid:Water", 0.2f, new InventorySlotTypeResolver("FLUID_INPUT")));
+        addFluidBehaviour(new ConsumeFluidBehaviour("CoreAssets:Water", 0.2f, new InventorySlotTypeResolver("FLUID_INPUT")));
         setRequiredHeat(recipe.requiredTemperature);
         setProcessingDuration(recipe.processingDuration);
 
