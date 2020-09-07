@@ -17,13 +17,13 @@ package org.terasology.alchemy.system;
 
 import com.google.common.base.Predicate;
 import org.terasology.alchemy.Alchemy;
-import org.terasology.assets.ResourceUrn;
 import org.terasology.entitySystem.entity.EntityManager;
 import org.terasology.entitySystem.entity.EntityRef;
 import org.terasology.entitySystem.prefab.Prefab;
 import org.terasology.entitySystem.prefab.PrefabManager;
 import org.terasology.entitySystem.systems.BaseComponentSystem;
 import org.terasology.entitySystem.systems.RegisterSystem;
+import org.terasology.gestalt.assets.ResourceUrn;
 import org.terasology.herbalism.component.HerbalismStationRecipeComponent;
 import org.terasology.herbalism.ui.HerbalismCraftingStationRecipe;
 import org.terasology.multiBlock.Basic2DSizeFilter;
