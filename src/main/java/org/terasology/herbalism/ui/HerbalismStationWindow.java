@@ -4,27 +4,27 @@
 package org.terasology.herbalism.ui;
 
 import org.terasology.alchemy.Alchemy;
-import org.terasology.workstationCrafting.ui.workstation.StationAvailableRecipesWidget;
-import org.terasology.engine.Time;
-import org.terasology.entitySystem.entity.EntityRef;
+import org.terasology.engine.core.Time;
+import org.terasology.engine.entitySystem.entity.EntityRef;
+import org.terasology.engine.logic.players.LocalPlayer;
+import org.terasology.engine.registry.CoreRegistry;
+import org.terasology.engine.rendering.nui.BaseInteractionScreen;
 import org.terasology.fluid.component.FluidComponent;
 import org.terasology.fluid.component.FluidInventoryComponent;
 import org.terasology.fluid.system.FluidRegistry;
 import org.terasology.fluid.ui.FluidContainerWidget;
 import org.terasology.heat.component.HeatProducerComponent;
 import org.terasology.heat.ui.ThermometerWidget;
-import org.terasology.logic.players.LocalPlayer;
+import org.terasology.inventory.rendering.nui.layers.ingame.InventoryGrid;
 import org.terasology.math.TeraMath;
-import org.terasology.processing.ui.VerticalTextureProgressWidget;
-import org.terasology.processing.ui.WorkstationScreenUtils;
-import org.terasology.registry.CoreRegistry;
-import org.terasology.rendering.nui.BaseInteractionScreen;
 import org.terasology.nui.databinding.Binding;
 import org.terasology.nui.databinding.ReadOnlyBinding;
-import org.terasology.rendering.nui.layers.ingame.inventory.InventoryGrid;
 import org.terasology.nui.widgets.UILoadBar;
+import org.terasology.processing.ui.VerticalTextureProgressWidget;
+import org.terasology.processing.ui.WorkstationScreenUtils;
 import org.terasology.workstation.component.WorkstationInventoryComponent;
 import org.terasology.workstation.component.WorkstationProcessingComponent;
+import org.terasology.workstationCrafting.ui.workstation.StationAvailableRecipesWidget;
 
 import java.util.List;
 
@@ -84,7 +84,7 @@ public class HerbalismStationWindow extends BaseInteractionScreen {
     /**
      * Upon opening the HerbalismStation window, setup the UI widgets.
      *
-     * @param station   EntityRef of the workstation in question.
+     * @param station EntityRef of the workstation in question.
      */
     @Override
     protected void initializeWithInteractionTarget(final EntityRef station) {
@@ -92,7 +92,8 @@ public class HerbalismStationWindow extends BaseInteractionScreen {
         WorkstationInventoryComponent workstationInventory = station.getComponent(WorkstationInventoryComponent.class);
 
         // Get the slot assignments of this inventory.
-        WorkstationInventoryComponent.SlotAssignment fluidInputAssignments = workstationInventory.slotAssignments.get("FLUID_INPUT");
+        WorkstationInventoryComponent.SlotAssignment fluidInputAssignments =
+                workstationInventory.slotAssignments.get("FLUID_INPUT");
 
         // Setup the inventory grids for the following widgets.
         WorkstationScreenUtils.setupInventoryGrid(station, ingredientsInventory, "INPUT");
@@ -175,7 +176,8 @@ public class HerbalismStationWindow extends BaseInteractionScreen {
                     @Override
                     public String get() {
                         FluidInventoryComponent fluidInventory = station.getComponent(FluidInventoryComponent.class);
-                        final FluidComponent fluid = fluidInventory.fluidSlots.get(waterSlot).getComponent(FluidComponent.class);
+                        final FluidComponent fluid =
+                                fluidInventory.fluidSlots.get(waterSlot).getComponent(FluidComponent.class);
                         if (fluid == null) {
                             return "0ml";
                         } else {
@@ -199,7 +201,8 @@ public class HerbalismStationWindow extends BaseInteractionScreen {
                         }
                         long gameTime = CoreRegistry.get(Time.class).getGameTimeInMs();
 
-                        HeatProducerComponent.FuelSourceConsume lastConsumed = consumedFuel.get(consumedFuel.size() - 1);
+                        HeatProducerComponent.FuelSourceConsume lastConsumed =
+                                consumedFuel.get(consumedFuel.size() - 1);
                         if (gameTime > lastConsumed.startTime + lastConsumed.burnLength) {
                             return 0f;
                         }
@@ -218,11 +221,13 @@ public class HerbalismStationWindow extends BaseInteractionScreen {
                     // Return a progress bar indicating the current progress of crafting (if currently running).
                     @Override
                     public Boolean get() {
-                        WorkstationProcessingComponent processing = station.getComponent(WorkstationProcessingComponent.class);
+                        WorkstationProcessingComponent processing =
+                                station.getComponent(WorkstationProcessingComponent.class);
                         if (processing == null) {
                             return false;
                         }
-                        WorkstationProcessingComponent.ProcessDef herbalismProcess = processing.processes.get(Alchemy.HERBALISM_PROCESS_TYPE);
+                        WorkstationProcessingComponent.ProcessDef herbalismProcess =
+                                processing.processes.get(Alchemy.HERBALISM_PROCESS_TYPE);
                         return herbalismProcess != null;
                     }
 
@@ -235,11 +240,13 @@ public class HerbalismStationWindow extends BaseInteractionScreen {
                 new Binding<Float>() {
                     @Override
                     public Float get() {
-                        WorkstationProcessingComponent processing = station.getComponent(WorkstationProcessingComponent.class);
+                        WorkstationProcessingComponent processing =
+                                station.getComponent(WorkstationProcessingComponent.class);
                         if (processing == null) {
                             return 1f;
                         }
-                        WorkstationProcessingComponent.ProcessDef herbalismProcess = processing.processes.get(Alchemy.HERBALISM_PROCESS_TYPE);
+                        WorkstationProcessingComponent.ProcessDef herbalismProcess =
+                                processing.processes.get(Alchemy.HERBALISM_PROCESS_TYPE);
                         if (herbalismProcess == null) {
                             return 1f;
                         }

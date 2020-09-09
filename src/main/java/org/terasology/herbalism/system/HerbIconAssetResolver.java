@@ -1,30 +1,17 @@
-/*
- * Copyright 2016 MovingBlocks
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
+// Copyright 2020 The Terasology Foundation
+// SPDX-License-Identifier: Apache-2.0
 package org.terasology.herbalism.system;
 
 import com.google.common.collect.ImmutableSet;
+import org.terasology.engine.rendering.assets.texture.Texture;
+import org.terasology.engine.rendering.assets.texture.TextureData;
+import org.terasology.engine.rendering.assets.texture.TextureRegionAsset;
+import org.terasology.engine.rendering.assets.texture.TextureUtil;
 import org.terasology.gestalt.assets.AssetDataProducer;
 import org.terasology.gestalt.assets.ResourceUrn;
 import org.terasology.gestalt.assets.management.AssetManager;
 import org.terasology.gestalt.assets.module.annotations.RegisterAssetDataProducer;
 import org.terasology.gestalt.naming.Name;
-import org.terasology.rendering.assets.texture.Texture;
-import org.terasology.rendering.assets.texture.TextureData;
-import org.terasology.rendering.assets.texture.TextureRegionAsset;
-import org.terasology.rendering.assets.texture.TextureUtil;
 
 import java.awt.Color;
 import java.awt.image.BufferedImage;
@@ -38,17 +25,21 @@ import java.util.Set;
  * This class is used to provide asset data for the creation of herb icons.
  */
 @RegisterAssetDataProducer
-public class HerbIconAssetResolver implements AssetDataProducer<TextureData>  {
-    /** Constant used for storing the name of this module. */
+public class HerbIconAssetResolver implements AssetDataProducer<TextureData> {
+    /**
+     * Constant used for storing the name of this module.
+     */
     private static final Name HERBALISM_MODULE = new Name("herbalism");
 
-    /** AssetManager which will be used to manage the herb assets. */
-    private AssetManager assetManager;
+    /**
+     * AssetManager which will be used to manage the herb assets.
+     */
+    private final AssetManager assetManager;
 
     /**
      * Create a new instance of this class using an instance of AssetManager to later work with assets.
      *
-     * @param assetManager  Instance of an asset manager that will be used to interface with multiple assets.
+     * @param assetManager Instance of an asset manager that will be used to interface with multiple assets.
      */
     public HerbIconAssetResolver(AssetManager assetManager) {
         this.assetManager = assetManager;
@@ -57,16 +48,16 @@ public class HerbIconAssetResolver implements AssetDataProducer<TextureData>  {
     /**
      * Create a URI for this herb using the given iconURI and the herb hue values.
      *
-     * @param iconUri       String containing the herb icon's URI.
-     * @param hueValues     Float array containing the herb colors.
-     * @return              URI for the herb icon containing both the base URI and all of the hue values.
+     * @param iconUri String containing the herb icon's URI.
+     * @param hueValues Float array containing the herb colors.
+     * @return URI for the herb icon containing both the base URI and all of the hue values.
      */
     public static String getHerbUri(String iconUri, float[] hueValues) {
         StringBuilder sb = new StringBuilder();
         sb.append("Alchemy:Herb(");
         sb.append(iconUri);
         for (float hueValue : hueValues) {
-            sb.append(",").append(String.valueOf(hueValue));
+            sb.append(",").append(hueValue);
         }
         sb.append(")");
 
@@ -74,8 +65,8 @@ public class HerbIconAssetResolver implements AssetDataProducer<TextureData>  {
     }
 
     /**
-     * Get the available set of resource URNs that this AssetDataProducer can provide data for. See parent interface
-     * for the full description.
+     * Get the available set of resource URNs that this AssetDataProducer can provide data for. See parent interface for
+     * the full description.
      *
      * @return An empty set - meaning this producer cannot provide data for any resource URN.
      */
@@ -88,8 +79,8 @@ public class HerbIconAssetResolver implements AssetDataProducer<TextureData>  {
      * The names of modules for which this producer can produce asset data with the given resource name for. In this
      * case, if the resource name starts with herb, the Herbalism module is returned.
      *
-     * @param resourceName  The name of a resource.
-     * @return              A set containing either nothing, or only the Herbalism module, which contains the resource.
+     * @param resourceName The name of a resource.
+     * @return A set containing either nothing, or only the Herbalism module, which contains the resource.
      */
     @Override
     public Set<Name> getModulesProviding(Name resourceName) {
@@ -100,11 +91,10 @@ public class HerbIconAssetResolver implements AssetDataProducer<TextureData>  {
     }
 
     /**
-     * See interface for full description.
-     * For herb icons, URN redirects will be not be allowed.
+     * See interface for full description. For herb icons, URN redirects will be not be allowed.
      *
-     * @param urn   The URN to redirect.
-     * @return      The original URN.
+     * @param urn The URN to redirect.
+     * @return The original URN.
      */
     @Override
     public ResourceUrn redirect(ResourceUrn urn) {
@@ -114,9 +104,9 @@ public class HerbIconAssetResolver implements AssetDataProducer<TextureData>  {
     /**
      * Get the asset data for this herb from this URN. Specifically, the herb icon image with the herb hues applied.
      *
-     * @param urn           The URN to get AssetData from.
-     * @return              An optional with the herb TextureData, if available.
-     * @throws IOException  If there is an error producing the AssetData.
+     * @param urn The URN to get AssetData from.
+     * @return An optional with the herb TextureData, if available.
+     * @throws IOException If there is an error producing the AssetData.
      */
     @Override
     public Optional<TextureData> getAssetData(ResourceUrn urn) throws IOException {
