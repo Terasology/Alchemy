@@ -6,7 +6,7 @@
         "recipeId": "Potions:AllSpeedPotion",
 
         "recipeComponents": ["1*Potions:glassBottle", "2*Alchemy:WalkSpeedHerb", "2*Alchemy:SwimSpeedHerb", "2*Alchemy:JumpSpeedHerb"],
-        "recipeFluids": ["0.5*Fluid:Water"],
+        "recipeFluids": ["0.5*CoreAssets:Water"],
         "requiredTemperature": 150,
         "processingDuration": 6000,
 

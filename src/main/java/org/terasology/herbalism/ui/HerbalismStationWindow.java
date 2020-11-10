@@ -1,18 +1,5 @@
-/*
- * Copyright 2016 MovingBlocks
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
+// Copyright 2020 The Terasology Foundation
+// SPDX-License-Identifier: Apache-2.0
 
 package org.terasology.herbalism.ui;
 
@@ -23,19 +10,19 @@ import org.terasology.entitySystem.entity.EntityRef;
 import org.terasology.fluid.component.FluidComponent;
 import org.terasology.fluid.component.FluidInventoryComponent;
 import org.terasology.fluid.system.FluidRegistry;
+import org.terasology.fluid.ui.FluidContainerWidget;
 import org.terasology.heat.component.HeatProducerComponent;
 import org.terasology.heat.ui.ThermometerWidget;
 import org.terasology.logic.players.LocalPlayer;
 import org.terasology.math.TeraMath;
-import org.terasology.processing.ui.FluidHolderWidget;
 import org.terasology.processing.ui.VerticalTextureProgressWidget;
 import org.terasology.processing.ui.WorkstationScreenUtils;
 import org.terasology.registry.CoreRegistry;
 import org.terasology.rendering.nui.BaseInteractionScreen;
-import org.terasology.rendering.nui.databinding.Binding;
-import org.terasology.rendering.nui.databinding.ReadOnlyBinding;
+import org.terasology.nui.databinding.Binding;
+import org.terasology.nui.databinding.ReadOnlyBinding;
 import org.terasology.rendering.nui.layers.ingame.inventory.InventoryGrid;
-import org.terasology.rendering.nui.widgets.UILoadBar;
+import org.terasology.nui.widgets.UILoadBar;
 import org.terasology.workstation.component.WorkstationInventoryComponent;
 import org.terasology.workstation.component.WorkstationProcessingComponent;
 
@@ -49,7 +36,7 @@ public class HerbalismStationWindow extends BaseInteractionScreen {
     // The following will store references to the various UI window widgets.
     private InventoryGrid fluidContainerInput;
     private InventoryGrid fluidContainerOutput;
-    private FluidHolderWidget fluidContainer;
+    private FluidContainerWidget fluidContainer;
     private InventoryGrid ingredientsInventory;
     private InventoryGrid toolsInventory;
     private ThermometerWidget temperature;
@@ -68,7 +55,7 @@ public class HerbalismStationWindow extends BaseInteractionScreen {
         toolsInventory = find("toolsInventory", InventoryGrid.class);
 
         fluidContainerInput = find("fluidContainerInputX", InventoryGrid.class);
-        fluidContainer = find("fluidContainer", FluidHolderWidget.class);
+        fluidContainer = find("fluidContainer", FluidContainerWidget.class);
         fluidContainerOutput = find("fluidContainerOutput", InventoryGrid.class);
 
         temperature = find("temperature", ThermometerWidget.class);
@@ -193,7 +180,7 @@ public class HerbalismStationWindow extends BaseInteractionScreen {
                             return "0ml";
                         } else {
                             FluidRegistry fluidRegistry = CoreRegistry.get(FluidRegistry.class);
-                            return TeraMath.floorToInt(fluid.volume * 1000) + "ml of " + fluidRegistry.getFluidRenderer(fluid.fluidType).getFluidName();
+                            return TeraMath.floorToInt(fluid.volume * 1000) + "ml of " + fluidRegistry.getDisplayName(fluid.fluidType);
                         }
                     }
                 });

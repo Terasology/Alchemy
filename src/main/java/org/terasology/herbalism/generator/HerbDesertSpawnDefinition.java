@@ -33,7 +33,7 @@ public class HerbDesertSpawnDefinition extends StaticBlockFloraSpawnDefinition {
      * Define the desert biome herb spawn details.
      */
     public HerbDesertSpawnDefinition() {
-        super(PlantType.GRASS, AnotherWorldBiomes.DESERT.getId(), 0.5f, 0.1f, "Herbalism:Herb",
+        super(PlantType.GRASS, AnotherWorldBiomes.DESERT.getId().toLowerCase(), 0.5f, 0.1f, "Herbalism:Herb",
                 Arrays.asList(
                         new BlockUri("Alchemy:AntiPoisonHerb"),
                         new BlockUri("Alchemy:PoisonHerb"),
@@ -42,6 +42,6 @@ public class HerbDesertSpawnDefinition extends StaticBlockFloraSpawnDefinition {
                         new BlockUri("WorkstationCrafting:Herb2"),
                         new BlockUri("WorkstationCrafting:Herb6"),
                         new BlockUri("WorkstationCrafting:Herb7")*/),
-                new BlockCollectionPredicate(Blocks.getBlock("CoreBlocks:Sand")), null);
+                new BlockCollectionPredicate(Blocks.getBlock("CoreAssets:Sand")), null);
     }
 }

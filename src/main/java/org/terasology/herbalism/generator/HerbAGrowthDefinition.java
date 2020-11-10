@@ -43,7 +43,7 @@ public class HerbAGrowthDefinition extends ReplaceBlockGrowthDefinition {
      */
     public HerbAGrowthDefinition() {
         super(ID, Arrays.asList(
-                        new BlockUri("Alchemy:HerbGrowA"), new BlockUri("Alchemy:HerbGrownA"), new BlockUri("CoreBlocks:DeadBush")),
+                        new BlockUri("Alchemy:HerbGrowA"), new BlockUri("Alchemy:HerbGrownA"), new BlockUri("CoreAssets:DeadBush")),
                 50 * 1000, 200 * 1000,
                 new Predicate<LocalParameters>() {
                     @Override

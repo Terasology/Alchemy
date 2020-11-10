@@ -1,18 +1,5 @@
-/*
- * Copyright 2016 MovingBlocks
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
+// Copyright 2020 The Terasology Foundation
+// SPDX-License-Identifier: Apache-2.0
 package org.terasology.herbalism.ui;
 
 import com.google.common.base.Predicate;
@@ -35,7 +22,7 @@ import org.terasology.herbalism.system.HerbalismClientSystem;
 import org.terasology.herbalism.system.HerbalismStationIngredientPredicate;
 import org.terasology.registry.CoreRegistry;
 import org.terasology.rendering.nui.layers.ingame.inventory.ItemIcon;
-import org.terasology.rendering.nui.widgets.TooltipLine;
+import org.terasology.nui.widgets.TooltipLine;
 import org.terasology.utilities.Assets;
 
 import java.util.Arrays;
@@ -68,7 +55,7 @@ public class HerbalismCraftingStationRecipe extends AbstractWorkstationRecipe {
         }
 
         // Add the fluid behavior and required heat and duration based on the recipe's parameters.
-        addFluidBehaviour(new ConsumeFluidBehaviour("Fluid:Water", 0.2f, new InventorySlotTypeResolver("FLUID_INPUT")));
+        addFluidBehaviour(new ConsumeFluidBehaviour("CoreAssets:Water", 0.2f, new InventorySlotTypeResolver("FLUID_INPUT")));
         setRequiredHeat(recipe.requiredTemperature);
         setProcessingDuration(recipe.processingDuration);
 

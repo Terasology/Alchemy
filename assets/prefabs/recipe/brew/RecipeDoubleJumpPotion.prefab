@@ -6,7 +6,7 @@
         "recipeId": "Potions:DoubleJumpPotion",
 
         "recipeComponents": ["1*Potions:glassBottle", "1*Alchemy:WalkSpeedHerb", "1*Alchemy:SwimSpeedHerb"],
-        "recipeFluids": ["0.5*Fluid:Water"],
+        "recipeFluids": ["0.5*CoreAssets:Water"],
         "requiredTemperature": 150,
         "processingDuration": 3250,
 

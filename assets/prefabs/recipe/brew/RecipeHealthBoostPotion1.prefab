@@ -6,7 +6,7 @@
         "recipeId": "Potions:HealthBoostPotion",
 
         "recipeComponents": ["1*Potions:glassBottle", "4*Alchemy:HealingHerb"],
-        "recipeFluids": ["1*Fluid:Water"],
+        "recipeFluids": ["1*CoreAssets:Water"],
         "requiredTemperature": 150,
         "processingDuration": 5000,
 
