@@ -1,20 +1,11 @@
-/*
- * Copyright 2014 MovingBlocks
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
+// Copyright 2020 The Terasology Foundation
+// SPDX-License-Identifier: Apache-2.0
 package org.terasology.herbalism.system;
 
+import org.joml.RoundingMode;
+import org.joml.Vector2f;
+import org.joml.Vector2i;
+import org.joml.Vector3f;
 import org.terasology.entitySystem.entity.EntityManager;
 import org.terasology.entitySystem.entity.EntityRef;
 import org.terasology.entitySystem.event.ReceiveEvent;
@@ -34,10 +25,6 @@ import org.terasology.logic.inventory.InventoryManager;
 import org.terasology.logic.inventory.ItemComponent;
 import org.terasology.logic.inventory.events.DropItemEvent;
 import org.terasology.logic.location.LocationComponent;
-import org.terasology.math.JomlUtil;
-import org.terasology.math.TeraMath;
-import org.terasology.math.geom.Vector2i;
-import org.terasology.math.geom.Vector3f;
 import org.terasology.physics.events.ImpulseEvent;
 import org.terasology.registry.In;
 import org.terasology.rendering.assets.texture.TextureRegionAsset;
@@ -137,7 +124,7 @@ public class HerbDropAuthoritySystem extends BaseComponentSystem {
 
             // Determine if the herb should be dropped onto the world, and if so, drop it without moving it.
             if (shouldDropToWorld(event, blockDamageModifierComponent, herb)) {
-                createDrop(herb, locationComp.getWorldPosition(), false);
+                createDrop(herb, locationComp.getWorldPosition(new Vector3f()), false);
             }
         }
     }
@@ -166,12 +153,13 @@ public class HerbDropAuthoritySystem extends BaseComponentSystem {
         if (random.nextFloat() < chanceOfBlockDrop) {
             // Get the base genome and world position of the old herb.
             final String herbBaseGenome = herbComp.herbBaseGenome;
-            final Vector3f position = locationComp.getWorldPosition();
+            final Vector3f position = locationComp.getWorldPosition(new Vector3f());
 
             // Using a BiodiversityGenerator, create a new set of (mutated) genes.
             BiodiversityGenerator generator = new BiodiversityGenerator(worldProvider.getSeed(), 0, new HerbGeneMutator(), herbBaseGenome,
                     3, 0.0002f);
-            final String generatedGenes = generator.generateGenes(new Vector2i(TeraMath.floorToInt(position.x + 0.5f), TeraMath.floorToInt(position.z + 0.5f)));
+            final String generatedGenes = generator.generateGenes(new Vector2i(new Vector2f(position.x + 0.5f, position.z + 0.5f),
+                RoundingMode.FLOOR));
 
             // Create a herb.
             EntityRef herb = entityManager.create("Alchemy:HerbBase");
@@ -189,7 +177,7 @@ public class HerbDropAuthoritySystem extends BaseComponentSystem {
 
             // Determine if the herb should be dropped onto the world, and if so, drop it without moving it.
             if (shouldDropToWorld(event, blockDamageModifierComponent, herb)) {
-                createDrop(herb, locationComp.getWorldPosition(), false);
+                createDrop(herb, locationComp.getWorldPosition(new Vector3f()), false);
             }
         }
     }
@@ -216,15 +204,12 @@ public class HerbDropAuthoritySystem extends BaseComponentSystem {
         }
 
         if (random.nextFloat() < chanceOfBlockDrop) {
-            // Get the world position of the old herb.
-            final Vector3f position = locationComp.getWorldPosition();
-
             // Create a new herb using the base genome. This should contain the name of the herb prefab.
             EntityRef herb = entityManager.create(herbComp.herbBaseGenome);
 
             // Determine if the herb should be dropped onto the world, and if so, drop it without moving it.
             if (shouldDropToWorld(event, blockDamageModifierComponent, herb)) {
-                createDrop(herb, locationComp.getWorldPosition(), false);
+                createDrop(herb, locationComp.getWorldPosition(new Vector3f()), false);
             }
         }
     }
@@ -258,7 +243,7 @@ public class HerbDropAuthoritySystem extends BaseComponentSystem {
     private void createDrop(EntityRef item, Vector3f location, boolean applyMovement) {
         item.send(new DropItemEvent(location));
         if (applyMovement) {
-            item.send(new ImpulseEvent(JomlUtil.from(random.nextVector3f(30.0f))));
+            item.send(new ImpulseEvent(random.nextVector3f(30.0f, new Vector3f())));
         }
     }
 }
