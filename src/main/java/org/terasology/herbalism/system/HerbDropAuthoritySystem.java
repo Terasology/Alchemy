@@ -158,8 +158,7 @@ public class HerbDropAuthoritySystem extends BaseComponentSystem {
             // Using a BiodiversityGenerator, create a new set of (mutated) genes.
             BiodiversityGenerator generator = new BiodiversityGenerator(worldProvider.getSeed(), 0, new HerbGeneMutator(), herbBaseGenome,
                     3, 0.0002f);
-            final String generatedGenes = generator.generateGenes(new Vector2i(new Vector2f(position.x + 0.5f, position.z + 0.5f),
-                RoundingMode.FLOOR));
+            final String generatedGenes = generator.generateGenes(new Vector2i(position.x, position.y));
 
             // Create a herb.
             EntityRef herb = entityManager.create("Alchemy:HerbBase");
