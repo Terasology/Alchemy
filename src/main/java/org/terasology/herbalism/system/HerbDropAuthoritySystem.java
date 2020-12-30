@@ -153,7 +153,7 @@ public class HerbDropAuthoritySystem extends BaseComponentSystem {
         if (random.nextFloat() < chanceOfBlockDrop) {
             // Get the base genome and world position of the old herb.
             final String herbBaseGenome = herbComp.herbBaseGenome;
-            final Vector3f position = locationComp.getWorldPosition(new Vector3f());
+            final Vector3i position = new Vector3i(locationComp.getWorldPosition(new Vector3f()), RoundingMode.HALF_UP);
 
             // Using a BiodiversityGenerator, create a new set of (mutated) genes.
             BiodiversityGenerator generator = new BiodiversityGenerator(worldProvider.getSeed(), 0, new HerbGeneMutator(), herbBaseGenome,
