@@ -13,7 +13,7 @@
         { "id": "Drops", "minVersion": "1.0.1" },
         { "id": "Durability", "minVersion": "1.1.0" },
         { "id": "Fluid", "minVersion": "2.0.0" },
-        { "id": "Genome", "minVersion": "1.0.0" },
+        { "id": "Genome", "minVersion": "1.0.1-SNAPSHOT" },
         { "id": "GrowingFlora", "minVersion": "1.0.0" },
         { "id": "InGameHelpAPI", "minVersion": "1.0.0" },
         { "id": "Inventory", "minVersion": "1.1.0" },
