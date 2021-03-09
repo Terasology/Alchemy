@@ -15,7 +15,7 @@
  */
 package org.terasology.herbalism.component;
 
-import org.terasology.entitySystem.Component;
+import org.terasology.engine.entitySystem.Component;
 
 /**
  * Add this component to an item to indicate that it is a predefined herb. That is, a prefab was directly used to generate

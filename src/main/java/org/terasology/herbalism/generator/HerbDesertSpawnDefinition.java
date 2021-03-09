@@ -17,10 +17,10 @@ package org.terasology.herbalism.generator;
 
 import org.terasology.anotherWorld.AnotherWorldBiomes;
 import org.terasology.anotherWorld.decorator.BlockCollectionPredicate;
+import org.terasology.engine.world.block.BlockUri;
+import org.terasology.engine.world.generator.plugin.RegisterPlugin;
 import org.terasology.gf.PlantType;
 import org.terasology.gf.generator.StaticBlockFloraSpawnDefinition;
-import org.terasology.world.block.BlockUri;
-import org.terasology.world.generator.plugin.RegisterPlugin;
 
 import java.util.Arrays;
 

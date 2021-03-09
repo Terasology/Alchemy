@@ -16,10 +16,10 @@
 package org.terasology.herbalism.system;
 
 import com.google.common.base.Predicate;
+import org.terasology.engine.entitySystem.entity.EntityRef;
+import org.terasology.herbalism.component.HerbComponent;
 import org.terasology.potions.component.EmptyPotionComponent;
 import org.terasology.workstationCrafting.component.CraftingStationIngredientComponent;
-import org.terasology.entitySystem.entity.EntityRef;
-import org.terasology.herbalism.component.HerbComponent;
 
 /**
  * This predicate class is used to filter out items that are not compatible with HerbalismStations.

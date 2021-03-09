@@ -15,9 +15,9 @@
  */
 package org.terasology.herbalism.generator;
 
-import org.terasology.registry.CoreRegistry;
-import org.terasology.world.block.Block;
-import org.terasology.world.block.BlockManager;
+import org.terasology.engine.registry.CoreRegistry;
+import org.terasology.engine.world.block.Block;
+import org.terasology.engine.world.block.BlockManager;
 
 /**
  * A utility class used for simplifying getting blocks from the BlockManager.

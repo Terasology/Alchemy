@@ -15,9 +15,9 @@
  */
 package org.terasology.herbalism;
 
+import org.terasology.engine.utilities.Assets;
 import org.terasology.namegenerator.data.NameGeneratorComponent;
 import org.terasology.namegenerator.generators.MarkovNameGenerator;
-import org.terasology.utilities.Assets;
 
 import java.util.List;
 

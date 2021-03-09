@@ -15,7 +15,7 @@
  */
 package org.terasology.herbalism.component;
 
-import org.terasology.entitySystem.Component;
+import org.terasology.engine.entitySystem.Component;
 
 /**
  * Add this component to an item (specficially an herb) to indicate that it's pollinating.

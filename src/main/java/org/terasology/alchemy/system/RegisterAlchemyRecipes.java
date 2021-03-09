@@ -18,12 +18,15 @@ package org.terasology.alchemy.system;
 import com.google.common.base.Predicate;
 import org.terasology.alchemy.Alchemy;
 import org.terasology.assets.ResourceUrn;
-import org.terasology.entitySystem.entity.EntityManager;
-import org.terasology.entitySystem.entity.EntityRef;
-import org.terasology.entitySystem.prefab.Prefab;
-import org.terasology.entitySystem.prefab.PrefabManager;
-import org.terasology.entitySystem.systems.BaseComponentSystem;
-import org.terasology.entitySystem.systems.RegisterSystem;
+import org.terasology.engine.entitySystem.entity.EntityManager;
+import org.terasology.engine.entitySystem.entity.EntityRef;
+import org.terasology.engine.entitySystem.prefab.Prefab;
+import org.terasology.engine.entitySystem.prefab.PrefabManager;
+import org.terasology.engine.entitySystem.systems.BaseComponentSystem;
+import org.terasology.engine.entitySystem.systems.RegisterSystem;
+import org.terasology.engine.registry.In;
+import org.terasology.engine.world.block.BlockManager;
+import org.terasology.engine.world.block.BlockUri;
 import org.terasology.herbalism.component.HerbalismStationRecipeComponent;
 import org.terasology.herbalism.ui.HerbalismCraftingStationRecipe;
 import org.terasology.multiBlock.Basic2DSizeFilter;
@@ -32,15 +35,12 @@ import org.terasology.multiBlock.MultiBlockFormRecipeRegistry;
 import org.terasology.multiBlock.recipe.LayeredMultiBlockFormItemRecipe;
 import org.terasology.processing.system.AnyActivityFilter;
 import org.terasology.processing.system.ToolTypeEntityFilter;
-import org.terasology.registry.In;
 import org.terasology.workstation.system.WorkstationRegistry;
 import org.terasology.workstationCrafting.component.CraftingStationMaterialComponent;
 import org.terasology.workstationCrafting.component.CraftingStationRecipeComponent;
 import org.terasology.workstationCrafting.system.CraftInHandRecipeRegistry;
 import org.terasology.workstationCrafting.system.CraftingWorkstationProcess;
 import org.terasology.workstationCrafting.system.CraftingWorkstationProcessFactory;
-import org.terasology.world.block.BlockManager;
-import org.terasology.world.block.BlockUri;
 
 /**
  * This system registers all of the Alchemy recipes in this module.

@@ -25,10 +25,17 @@ import org.terasology.alterationEffects.speed.MultiJumpAlterationEffect;
 import org.terasology.alterationEffects.speed.SwimSpeedAlterationEffect;
 import org.terasology.alterationEffects.speed.WalkSpeedAlterationEffect;
 import org.terasology.assets.management.AssetManager;
-import org.terasology.context.Context;
-import org.terasology.entitySystem.prefab.PrefabManager;
-import org.terasology.entitySystem.systems.BaseComponentSystem;
-import org.terasology.entitySystem.systems.RegisterSystem;
+import org.terasology.engine.context.Context;
+import org.terasology.engine.entitySystem.prefab.PrefabManager;
+import org.terasology.engine.entitySystem.systems.BaseComponentSystem;
+import org.terasology.engine.entitySystem.systems.RegisterSystem;
+import org.terasology.engine.registry.In;
+import org.terasology.engine.rendering.assets.texture.TextureRegionAsset;
+import org.terasology.engine.utilities.Assets;
+import org.terasology.engine.utilities.random.FastRandom;
+import org.terasology.engine.world.WorldProvider;
+import org.terasology.engine.world.block.Block;
+import org.terasology.engine.world.block.BlockManager;
 import org.terasology.genome.GenomeDefinition;
 import org.terasology.genome.GenomeRegistry;
 import org.terasology.genome.breed.BreedingAlgorithm;
@@ -44,13 +51,6 @@ import org.terasology.potions.HerbEffect;
 import org.terasology.potions.effect.AlterationToHerbEffectWrapper;
 import org.terasology.potions.effect.DoNothingEffect;
 import org.terasology.potions.effect.HealEffect;
-import org.terasology.registry.In;
-import org.terasology.rendering.assets.texture.TextureRegionAsset;
-import org.terasology.utilities.Assets;
-import org.terasology.utilities.random.FastRandom;
-import org.terasology.world.WorldProvider;
-import org.terasology.world.block.Block;
-import org.terasology.world.block.BlockManager;
 
 /**
  * Common system for Herbalism that handles the registration of herb effects and genome properties.

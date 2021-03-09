@@ -6,15 +6,15 @@ import com.google.common.base.Function;
 import com.google.common.base.Predicate;
 import org.joml.Vector3i;
 import org.terasology.anotherWorld.LocalParameters;
-import org.terasology.entitySystem.entity.EntityRef;
+import org.terasology.engine.entitySystem.entity.EntityRef;
+import org.terasology.engine.registry.CoreRegistry;
+import org.terasology.engine.world.BlockEntityRegistry;
+import org.terasology.engine.world.WorldProvider;
+import org.terasology.engine.world.block.BlockManager;
+import org.terasology.engine.world.block.BlockUri;
+import org.terasology.engine.world.generator.plugin.RegisterPlugin;
 import org.terasology.genome.component.GenomeComponent;
 import org.terasology.gf.grass.ReplaceBlockGrowthDefinition;
-import org.terasology.registry.CoreRegistry;
-import org.terasology.world.BlockEntityRegistry;
-import org.terasology.world.WorldProvider;
-import org.terasology.world.block.BlockManager;
-import org.terasology.world.block.BlockUri;
-import org.terasology.world.generator.plugin.RegisterPlugin;
 
 import java.util.Arrays;
 

@@ -16,10 +16,10 @@
 package org.terasology.herbalism;
 
 import org.terasology.anotherWorld.util.ChanceRandomizer;
-import org.terasology.entitySystem.systems.BaseComponentSystem;
-import org.terasology.entitySystem.systems.RegisterSystem;
+import org.terasology.engine.entitySystem.systems.BaseComponentSystem;
+import org.terasology.engine.entitySystem.systems.RegisterSystem;
+import org.terasology.engine.registry.Share;
 import org.terasology.potions.HerbEffect;
-import org.terasology.registry.Share;
 
 /**
  * This class is used for storing and retrieving the default herb effects in a registry format.
