@@ -14,7 +14,7 @@ public class HerbHueComponent implements Component<HerbHueComponent> {
     public List<String> hueRanges;
 
     @Override
-    public void copy(HerbHueComponent other) {
+    public void copyFrom(HerbHueComponent other) {
         this.hueRanges = Lists.newArrayList(other.hueRanges);
     }
 }

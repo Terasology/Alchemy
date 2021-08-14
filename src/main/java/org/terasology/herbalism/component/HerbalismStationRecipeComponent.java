@@ -25,7 +25,7 @@ public class HerbalismStationRecipeComponent implements Component<HerbalismStati
     public String blockResult;
 
     @Override
-    public void copy(HerbalismStationRecipeComponent other) {
+    public void copyFrom(HerbalismStationRecipeComponent other) {
         this.recipeId = other.recipeId;
         this.recipeComponents = Lists.newArrayList(other.recipeComponents);
         this.recipeTools = Lists.newArrayList(other.recipeTools);

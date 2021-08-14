@@ -12,7 +12,7 @@ public final class PredefinedHerbComponent implements Component<PredefinedHerbCo
     public String herbBaseGenome;
 
     @Override
-    public void copy(PredefinedHerbComponent other) {
+    public void copyFrom(PredefinedHerbComponent other) {
         this.herbBaseGenome = other.herbBaseGenome;
     }
 }
