@@ -2,10 +2,7 @@
 // SPDX-License-Identifier: Apache-2.0
 package org.terasology.herbalism.generator;
 
-import com.google.common.base.Function;
-import com.google.common.base.Predicate;
-import org.joml.Vector3i;
-import org.terasology.anotherWorld.LocalParameters;
+import org.joml.Vector3ic;
 import org.terasology.engine.entitySystem.entity.EntityRef;
 import org.terasology.engine.registry.CoreRegistry;
 import org.terasology.engine.world.BlockEntityRegistry;
@@ -32,18 +29,8 @@ public class HerbAGrowthDefinition extends ReplaceBlockGrowthDefinition {
         super(ID, Arrays.asList(
                         new BlockUri("Alchemy:HerbGrowA"), new BlockUri("Alchemy:HerbGrownA"), new BlockUri("CoreAssets:DeadBush")),
                 50 * 1000, 200 * 1000,
-                new Predicate<LocalParameters>() {
-                    @Override
-                    public boolean apply(LocalParameters input) {
-                        return input.getHumidity() > 0.2f && input.getTemperature() > 15f;
-                    }
-                },
-                new Function<LocalParameters, Float>() {
-                    @Override
-                    public Float apply(LocalParameters input) {
-                        return 0.2f * input.getHumidity();
-                    }
-                }
+                input -> input.getHumidity() > 0.2f && input.getTemperature() > 15f,
+                input -> 0.2f * input.getHumidity()
         );
     }
 
@@ -58,7 +45,7 @@ public class HerbAGrowthDefinition extends ReplaceBlockGrowthDefinition {
      * @param isLast            Whether this is the last stage of herb plant growth.
      */
     @Override
-    protected void replaceBlock(WorldProvider worldProvider, BlockManager blockManager, EntityRef plant, Vector3i position, BlockUri nextStage, boolean isLast) {
+    protected void replaceBlock(WorldProvider worldProvider, BlockManager blockManager, EntityRef plant, Vector3ic position, BlockUri nextStage, boolean isLast) {
         // If this is not the last stage of herb plant growth, continue as normal. Otherwise, just call the parent method.
         if (!isLast) {
             // We need to copy the genome between growth stages. Otherwise it will be lost upon replacing this block.
