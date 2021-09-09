@@ -8,7 +8,6 @@ import org.joml.Vector3f;
 import org.joml.Vector3i;
 import org.terasology.engine.entitySystem.entity.EntityManager;
 import org.terasology.engine.entitySystem.entity.EntityRef;
-import org.terasology.engine.entitySystem.event.ReceiveEvent;
 import org.terasology.engine.entitySystem.systems.BaseComponentSystem;
 import org.terasology.engine.entitySystem.systems.RegisterMode;
 import org.terasology.engine.entitySystem.systems.RegisterSystem;
@@ -27,6 +26,7 @@ import org.terasology.engine.world.block.entity.damage.BlockDamageModifierCompon
 import org.terasology.genome.breed.BiodiversityGenerator;
 import org.terasology.genome.component.GenomeComponent;
 import org.terasology.genome.system.GenomeManager;
+import org.terasology.gestalt.entitysystem.event.ReceiveEvent;
 import org.terasology.herbalism.HerbGeneMutator;
 import org.terasology.herbalism.Herbalism;
 import org.terasology.herbalism.component.GeneratedHerbComponent;
