@@ -6,7 +6,6 @@ import org.joml.Vector3i;
 import org.terasology.anotherWorldPlants.farm.component.FarmSoilComponent;
 import org.terasology.anotherWorldPlants.farm.event.SeedPlanted;
 import org.terasology.engine.entitySystem.entity.EntityRef;
-import org.terasology.engine.entitySystem.event.ReceiveEvent;
 import org.terasology.engine.entitySystem.systems.BaseComponentSystem;
 import org.terasology.engine.entitySystem.systems.RegisterMode;
 import org.terasology.engine.entitySystem.systems.RegisterSystem;
@@ -18,6 +17,7 @@ import org.terasology.engine.world.block.Block;
 import org.terasology.engine.world.block.BlockComponent;
 import org.terasology.genome.component.GenomeComponent;
 import org.terasology.genome.system.GenomeManager;
+import org.terasology.gestalt.entitysystem.event.ReceiveEvent;
 import org.terasology.gf.PlantedSaplingComponent;
 import org.terasology.herbalism.Herbalism;
 import org.terasology.herbalism.component.PollinatingHerbComponent;
@@ -64,7 +64,8 @@ public class HerbalismAuthoritySystem extends BaseComponentSystem {
      * @param block                     The herb plant's block component. This is physically where the herb is located on the world.
      */
     @ReceiveEvent
-    public void herbPollination(RandomUpdateEvent event, EntityRef herb, GenomeComponent genome, PollinatingHerbComponent pollinatingHerbComponent, BlockComponent block) {
+    public void herbPollination(RandomUpdateEvent event, EntityRef herb, GenomeComponent genome,
+                                PollinatingHerbComponent pollinatingHerbComponent, BlockComponent block) {
         Vector3i blockPosition = block.getPosition(new Vector3i());
 
         FastRandom random = new FastRandom();
@@ -84,7 +85,8 @@ public class HerbalismAuthoritySystem extends BaseComponentSystem {
                             int resultY = blockPosition.y + resultDY;
                             Vector3i plantLocation = new Vector3i(resultX, resultY, resultZ);
                             if (worldProvider.getBlock(plantLocation).isPenetrable()
-                                    && blockEntityRegistry.getEntityAt(new Vector3i(resultX, resultY - 1, resultZ)).hasComponent(FarmSoilComponent.class)) {
+                                    && blockEntityRegistry.getEntityAt(new Vector3i(resultX, resultY - 1, resultZ))
+                                    .hasComponent(FarmSoilComponent.class)) {
                                 Block plantedBlock = genomeManager.getGenomeProperty(herb, Herbalism.PLANTED_BLOCK_PROPERTY, Block.class);
                                 worldProvider.setBlock(plantLocation, plantedBlock);
                                 EntityRef plantedHerbEntity = blockEntityRegistry.getEntityAt(plantLocation);

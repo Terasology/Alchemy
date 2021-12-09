@@ -1,4 +1,4 @@
-// Copyright 2020 The Terasology Foundation
+// Copyright 2021 The Terasology Foundation
 // SPDX-License-Identifier: Apache-2.0
 package org.terasology.alchemy.system;
 
@@ -169,7 +169,8 @@ public class SeedingHerbRecipe implements CraftInHandRecipe {
 
             // Replace the icon with a seed bag image.
             ItemComponent itemComponent = herbSeed.getComponent(ItemComponent.class);
-            itemComponent.icon = Assets.getTextureRegion("AnotherWorldPlants:SeedBag(" + HERB_BEHAVIOUR.getHerbIconUri(parameters.get(1)) + ")").get();
+            itemComponent.icon = Assets.getTextureRegion("AnotherWorldPlants:SeedBag(" + HERB_BEHAVIOUR
+                    .getHerbIconUri(parameters.get(1)) + ")").get();
             herbSeed.saveComponent(itemComponent);
 
             return herbSeed;
@@ -239,8 +240,10 @@ public class SeedingHerbRecipe implements CraftInHandRecipe {
          */
         @Override
         public void setupResultDisplay(ItemIcon itemIcon) {
-            itemIcon.setIcon(Assets.getTextureRegion("AnotherWorldPlants:SeedBag(" + HERB_BEHAVIOUR.getHerbIconUri(parameters.get(1)) + ")").get());
-            itemIcon.setTooltipLines(Arrays.asList(new TooltipLine("Herb Seed"), HerbalismClientSystem.getHerbTooltipLine(HERB_BEHAVIOUR.getHerbName(parameters.get(1)))));
+            itemIcon.setIcon(Assets.getTextureRegion("AnotherWorldPlants:SeedBag(" + HERB_BEHAVIOUR
+                    .getHerbIconUri(parameters.get(1)) + ")").get());
+            itemIcon.setTooltipLines(Arrays.asList(new TooltipLine("Herb Seed"), HerbalismClientSystem
+                    .getHerbTooltipLine(HERB_BEHAVIOUR.getHerbName(parameters.get(1)))));
         }
     }
 
@@ -291,7 +294,8 @@ public class SeedingHerbRecipe implements CraftInHandRecipe {
 
             final GenomeManager genomeManager = CoreRegistry.get(GenomeManager.class);
             String herbName = genomeManager.getGenomeProperty(item, Herbalism.NAME_PROPERTY, String.class);
-            String herbIconUri = (genomeManager.getGenomeProperty(item, Herbalism.ICON_PROPERTY, TextureRegionAsset.class)).getUrn().toString();
+            String herbIconUri = (genomeManager.getGenomeProperty(item, Herbalism.ICON_PROPERTY, TextureRegionAsset.class))
+                    .getUrn().toString();
 
             return super.getParameter(slots, item) + "|" + genome.genes + "|" + herbName + "|" + herbIconUri;
         }

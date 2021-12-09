@@ -1,18 +1,5 @@
-/*
- * Copyright 2016 MovingBlocks
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
+// Copyright 2021 The Terasology Foundation
+// SPDX-License-Identifier: Apache-2.0
 package org.terasology.alchemy.system;
 
 import com.google.common.base.Predicate;
@@ -81,7 +68,8 @@ public class RegisterAlchemyRecipes extends BaseComponentSystem {
                 new ToolTypeEntityFilter("mortarAndPestle"), new Basic2DSizeFilter(3, 1), new AnyActivityFilter(),
                 "Alchemy:HerbalismStation", null);
         herbalismStationRecipe.addLayer(1, 1, new BlockUriEntityFilter(new BlockUri("CoreAssets:Brick")));
-        herbalismStationRecipe.addLayer(1, 1, new BlockUriEntityFilter(new BlockUri(new ResourceUrn("CoreAssets:CobbleStone"), new ResourceUrn(("Engine:EighthBlock")))));
+        herbalismStationRecipe.addLayer(1, 1, new BlockUriEntityFilter(new BlockUri(
+                new ResourceUrn("CoreAssets:CobbleStone"), new ResourceUrn(("Engine:EighthBlock")))));
         multiBlockFormRecipeRegistry.addMultiBlockFormItemRecipe(herbalismStationRecipe);
     }
 
@@ -91,7 +79,8 @@ public class RegisterAlchemyRecipes extends BaseComponentSystem {
     private void addHerbalismWorkstationRecipes() {
         // TODO: Temporarily removed for sake of testing.
         /* workstationRegistry.registerProcess(WorkstationCrafting.HERBALISM_PROCESS_TYPE,
-                new CraftingWorkstationProcess(WorkstationCrafting.HERBALISM_PROCESS_TYPE, "WorkstationCrafting:HerbPotion", new HerbalismCraftingStationRecipe()));*/
+                new CraftingWorkstationProcess(WorkstationCrafting.HERBALISM_PROCESS_TYPE,
+                "WorkstationCrafting:HerbPotion", new HerbalismCraftingStationRecipe()));*/
 
         // Add all the recipes marked with "HerbalismStationRecipeComponent" in their prefabs and add them to the list.
         for (Prefab prefab : prefabManager.listPrefabs(HerbalismStationRecipeComponent.class)) {

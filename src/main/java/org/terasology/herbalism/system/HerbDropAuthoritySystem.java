@@ -1,4 +1,4 @@
-// Copyright 2020 The Terasology Foundation
+// Copyright 2021 The Terasology Foundation
 // SPDX-License-Identifier: Apache-2.0
 package org.terasology.herbalism.system;
 
@@ -8,12 +8,10 @@ import org.joml.Vector3f;
 import org.joml.Vector3i;
 import org.terasology.engine.entitySystem.entity.EntityManager;
 import org.terasology.engine.entitySystem.entity.EntityRef;
-import org.terasology.engine.entitySystem.event.ReceiveEvent;
 import org.terasology.engine.entitySystem.systems.BaseComponentSystem;
 import org.terasology.engine.entitySystem.systems.RegisterMode;
 import org.terasology.engine.entitySystem.systems.RegisterSystem;
 import org.terasology.engine.logic.health.DoDestroyEvent;
-import org.terasology.module.inventory.systems.InventoryManager;
 import org.terasology.engine.logic.inventory.ItemComponent;
 import org.terasology.engine.logic.inventory.events.DropItemEvent;
 import org.terasology.engine.logic.location.LocationComponent;
@@ -28,11 +26,13 @@ import org.terasology.engine.world.block.entity.damage.BlockDamageModifierCompon
 import org.terasology.genome.breed.BiodiversityGenerator;
 import org.terasology.genome.component.GenomeComponent;
 import org.terasology.genome.system.GenomeManager;
+import org.terasology.gestalt.entitysystem.event.ReceiveEvent;
 import org.terasology.herbalism.HerbGeneMutator;
 import org.terasology.herbalism.Herbalism;
 import org.terasology.herbalism.component.GeneratedHerbComponent;
 import org.terasology.herbalism.component.HerbComponent;
 import org.terasology.herbalism.component.PredefinedHerbComponent;
+import org.terasology.module.inventory.systems.InventoryManager;
 
 /**
  * Authority system for managing what happens when a herb drops onto the world.
@@ -93,7 +93,8 @@ public class HerbDropAuthoritySystem extends BaseComponentSystem {
      * @param locationComp      Where was the herb block located in the world.
      */
     @ReceiveEvent
-    public void onGrownHerbDestroyed(DoDestroyEvent event, EntityRef entity, HerbComponent herbComp, GenomeComponent genomeComponent, LocationComponent locationComp) {
+    public void onGrownHerbDestroyed(DoDestroyEvent event, EntityRef entity, HerbComponent herbComp,
+                                     GenomeComponent genomeComponent, LocationComponent locationComp) {
         // Get the block damage modifier and set the block drop chance to 1 (that is, 0%).
         BlockDamageModifierComponent blockDamageModifierComponent = event.getDamageType().getComponent(BlockDamageModifierComponent.class);
         float chanceOfBlockDrop = 1;
@@ -138,7 +139,8 @@ public class HerbDropAuthoritySystem extends BaseComponentSystem {
      * @param locationComp      Where was the herb block located in the world.
      */
     @ReceiveEvent
-    public void onGeneratedHerbDestroyed(DoDestroyEvent event, EntityRef entity, GeneratedHerbComponent herbComp, LocationComponent locationComp) {
+    public void onGeneratedHerbDestroyed(DoDestroyEvent event, EntityRef entity,
+                                         GeneratedHerbComponent herbComp, LocationComponent locationComp) {
         // Get the block damage modifier and set the block drop chance to 1 (that is, 0%).
         BlockDamageModifierComponent blockDamageModifierComponent = event.getDamageType().getComponent(BlockDamageModifierComponent.class);
         float chanceOfBlockDrop = 1;
@@ -190,7 +192,8 @@ public class HerbDropAuthoritySystem extends BaseComponentSystem {
      * @param locationComp      Where was the herb block located in the world.
      */
     @ReceiveEvent
-    public void onPredefinedHerbDestroyed(DoDestroyEvent event, EntityRef entity, PredefinedHerbComponent herbComp, LocationComponent locationComp) {
+    public void onPredefinedHerbDestroyed(DoDestroyEvent event, EntityRef entity,
+                                          PredefinedHerbComponent herbComp, LocationComponent locationComp) {
         // Get the block damage modifier and set the block drop chance to 1 (that is, 0%).
         BlockDamageModifierComponent blockDamageModifierComponent = event.getDamageType().getComponent(BlockDamageModifierComponent.class);
         float chanceOfBlockDrop = 1;
