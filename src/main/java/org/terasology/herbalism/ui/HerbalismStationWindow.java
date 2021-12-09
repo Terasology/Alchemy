@@ -1,4 +1,4 @@
-// Copyright 2020 The Terasology Foundation
+// Copyright 2021 The Terasology Foundation
 // SPDX-License-Identifier: Apache-2.0
 
 package org.terasology.herbalism.ui;
@@ -246,7 +246,8 @@ public class HerbalismStationWindow extends BaseInteractionScreen {
 
                         long gameTime = CoreRegistry.get(Time.class).getGameTimeInMs();
 
-                        return 1f * (gameTime - herbalismProcess.processingStartTime) / (herbalismProcess.processingFinishTime - herbalismProcess.processingStartTime);
+                        return 1f * (gameTime - herbalismProcess.processingStartTime)
+                                / (herbalismProcess.processingFinishTime - herbalismProcess.processingStartTime);
                     }
 
                     @Override

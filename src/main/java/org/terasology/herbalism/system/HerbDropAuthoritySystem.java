@@ -1,4 +1,4 @@
-// Copyright 2020 The Terasology Foundation
+// Copyright 2021 The Terasology Foundation
 // SPDX-License-Identifier: Apache-2.0
 package org.terasology.herbalism.system;
 
@@ -93,7 +93,8 @@ public class HerbDropAuthoritySystem extends BaseComponentSystem {
      * @param locationComp      Where was the herb block located in the world.
      */
     @ReceiveEvent
-    public void onGrownHerbDestroyed(DoDestroyEvent event, EntityRef entity, HerbComponent herbComp, GenomeComponent genomeComponent, LocationComponent locationComp) {
+    public void onGrownHerbDestroyed(DoDestroyEvent event, EntityRef entity, HerbComponent herbComp,
+                                     GenomeComponent genomeComponent, LocationComponent locationComp) {
         // Get the block damage modifier and set the block drop chance to 1 (that is, 0%).
         BlockDamageModifierComponent blockDamageModifierComponent = event.getDamageType().getComponent(BlockDamageModifierComponent.class);
         float chanceOfBlockDrop = 1;
@@ -138,7 +139,8 @@ public class HerbDropAuthoritySystem extends BaseComponentSystem {
      * @param locationComp      Where was the herb block located in the world.
      */
     @ReceiveEvent
-    public void onGeneratedHerbDestroyed(DoDestroyEvent event, EntityRef entity, GeneratedHerbComponent herbComp, LocationComponent locationComp) {
+    public void onGeneratedHerbDestroyed(DoDestroyEvent event, EntityRef entity,
+                                         GeneratedHerbComponent herbComp, LocationComponent locationComp) {
         // Get the block damage modifier and set the block drop chance to 1 (that is, 0%).
         BlockDamageModifierComponent blockDamageModifierComponent = event.getDamageType().getComponent(BlockDamageModifierComponent.class);
         float chanceOfBlockDrop = 1;
@@ -190,7 +192,8 @@ public class HerbDropAuthoritySystem extends BaseComponentSystem {
      * @param locationComp      Where was the herb block located in the world.
      */
     @ReceiveEvent
-    public void onPredefinedHerbDestroyed(DoDestroyEvent event, EntityRef entity, PredefinedHerbComponent herbComp, LocationComponent locationComp) {
+    public void onPredefinedHerbDestroyed(DoDestroyEvent event, EntityRef entity,
+                                          PredefinedHerbComponent herbComp, LocationComponent locationComp) {
         // Get the block damage modifier and set the block drop chance to 1 (that is, 0%).
         BlockDamageModifierComponent blockDamageModifierComponent = event.getDamageType().getComponent(BlockDamageModifierComponent.class);
         float chanceOfBlockDrop = 1;

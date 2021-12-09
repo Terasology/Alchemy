@@ -64,7 +64,8 @@ public class HerbalismAuthoritySystem extends BaseComponentSystem {
      * @param block                     The herb plant's block component. This is physically where the herb is located on the world.
      */
     @ReceiveEvent
-    public void herbPollination(RandomUpdateEvent event, EntityRef herb, GenomeComponent genome, PollinatingHerbComponent pollinatingHerbComponent, BlockComponent block) {
+    public void herbPollination(RandomUpdateEvent event, EntityRef herb, GenomeComponent genome,
+                                PollinatingHerbComponent pollinatingHerbComponent, BlockComponent block) {
         Vector3i blockPosition = block.getPosition(new Vector3i());
 
         FastRandom random = new FastRandom();
@@ -84,7 +85,8 @@ public class HerbalismAuthoritySystem extends BaseComponentSystem {
                             int resultY = blockPosition.y + resultDY;
                             Vector3i plantLocation = new Vector3i(resultX, resultY, resultZ);
                             if (worldProvider.getBlock(plantLocation).isPenetrable()
-                                    && blockEntityRegistry.getEntityAt(new Vector3i(resultX, resultY - 1, resultZ)).hasComponent(FarmSoilComponent.class)) {
+                                    && blockEntityRegistry.getEntityAt(new Vector3i(resultX, resultY - 1, resultZ))
+                                    .hasComponent(FarmSoilComponent.class)) {
                                 Block plantedBlock = genomeManager.getGenomeProperty(herb, Herbalism.PLANTED_BLOCK_PROPERTY, Block.class);
                                 worldProvider.setBlock(plantLocation, plantedBlock);
                                 EntityRef plantedHerbEntity = blockEntityRegistry.getEntityAt(plantLocation);

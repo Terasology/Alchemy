@@ -45,7 +45,8 @@ public class HerbAGrowthDefinition extends ReplaceBlockGrowthDefinition {
      * @param isLast            Whether this is the last stage of herb plant growth.
      */
     @Override
-    protected void replaceBlock(WorldProvider worldProvider, BlockManager blockManager, EntityRef plant, Vector3ic position, BlockUri nextStage, boolean isLast) {
+    protected void replaceBlock(WorldProvider worldProvider, BlockManager blockManager, EntityRef plant,
+                                Vector3ic position, BlockUri nextStage, boolean isLast) {
         // If this is not the last stage of herb plant growth, continue as normal. Otherwise, just call the parent method.
         if (!isLast) {
             // We need to copy the genome between growth stages. Otherwise it will be lost upon replacing this block.
